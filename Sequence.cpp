@@ -1,0 +1,187 @@
+#include "Sequence.h"
+#include "SequenceNode.h"
+#include <string>
+#include <ostream>
+#include <exception>
+
+// Creates an empty sequence (numElts == 0) or a sequence of numElts items
+// indexed from 0 ... (numElts - 1).
+Sequence::Sequence(size_t sz = 0) : size(sz), head(nullptr), tail(nullptr)
+{
+    if (sz < 0) 
+    {
+        throw exception();
+    }
+
+    return;
+}
+// Creates a (deep) copy of sequence s
+Sequence::Sequence(const Sequence& s)
+{
+    if (s.size < 0) 
+    {
+        throw exception();
+    }
+    this->size = s.size;
+    this->head = s.head;
+    this->tail = s.tail;
+    return;
+}
+// Destroys all items in the sequence and release the memory
+// associated with the sequence
+Sequence::~Sequence()
+{
+    this->clear();
+    delete(this);
+    return;
+}
+// The current sequence is released and replaced by a (deep) copy of sequence
+// s. A reference to the copied sequence is returned (return *this;).
+Sequence& Sequence::operator=(const Sequence& s)
+{
+    if (s.size < 0) 
+    {
+        throw exception();
+    }
+    this->size = s.size;
+    this->head = s.head;
+    this->tail = s.tail;
+    return *this;
+}
+// The position satisfies ( position >= 0 && position <= last_index() ).
+// The return value is a reference to the item at index position in the
+// sequence. Throws an exception if the position is outside the bounds
+// of the sequence
+std::string& Sequence::operator[](size_t position)
+{
+    if (position > this->last_index()) 
+    {
+        throw exception();
+    }
+    SequenceNode* current_node;
+    SequenceNode* next_node;
+    int index = 0;
+
+    current_node = this->head;
+    NextNode = this->head->next;
+    delete(cur)
+    while (NextNode != nullptr)
+    {
+        current_node = &NextNode;
+        NextNode = current_node->next;
+        index += 1;
+    }
+    return;
+}
+// The value of item is append to the sequence.
+void Sequence::push_back(std::string item)
+{
+    return;
+}
+// The item at the end of the sequence is deleted and size of the sequence is
+// reduced by one. If sequence was empty, throws an exception
+void Sequence::pop_back()
+{
+    if (this->empty()) 
+    {
+        throw exception();
+    }
+    return;
+}
+// The position satisfies ( position >= 0 && position <= last_index() ). The
+// value of item is inserted at position and the size of sequence is increased
+// by one. Throws an exceptionif the position is outside the bounds of the
+// sequence
+void Sequence::insert(size_t position, std::string item)
+{
+    if (position > this->last_index()) 
+    {
+        throw exception();
+    }
+    return;
+}
+// Returns the first element in the sequence. If the sequence is empty, throw an exception.
+std::string Sequence::front() const
+{
+    if (this->empty()) 
+    {
+        throw exception();
+    }
+    return;
+}
+// Return the last element in the sequence. If the sequence is empty, throw an exception.
+std::string Sequence::back() const
+{
+    if (this->empty()) 
+    {
+        throw exception();
+    }
+    return this->tail->item;
+}
+// Return true if the sequence has no elements, otherwise false.
+bool Sequence::empty() const
+{
+    if (this->size > 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+// Return the number of elements in the sequence.
+size_t Sequence::size() const
+{
+    return this->size;
+}
+// All items in the sequence are deleted and the memory associated with the
+// sequence is released, resetting the sequence to an empty state that can have
+// items re-inserted.
+void Sequence::clear()
+{
+    SequenceNode* curr_tail;
+    SequenceNode* prev_node;
+
+    curr_tail = this->tail;
+    prev_node = curr_tail->prev;
+    delete(curr_tail);
+    while (prev_node != nullptr)
+    {
+        curr_tail = &prev_node;
+        prev_node = curr_tail->prev;
+        delete(curr_tail)
+    }
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->size = 0;
+    return;
+}
+// The item at position is removed from the sequence, and the memory
+// is released. If called with an invalid position throws an exception.
+void Sequence::erase(size_t position)
+{
+    return;
+}
+// The items in the sequence at ( position ... (position + count - 1) ) are
+// deleted and their memory released. If called with invalid position and/or
+// count throws an exception.
+void Sequence::erase(size_t position, size_t count)
+{
+    if (position > (this->size - count - 1)) 
+    {
+        throw exception();
+    }
+    return;
+}
+int Sequence::last_index()
+{
+    return this->size - 1;
+}
+// Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
+// stream. This is *not* a method of the Sequence class, but instead it is a
+// friend function
+friend ostream& operator<<(ostream& os, const Sequence& s)
+{
+    return;
+}
