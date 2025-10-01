@@ -25,7 +25,7 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
         current_node->get_next() = next_node;
         
         this->head = current_node;
-        for (i = 0; i < (sz - 1); i++)
+        for (int i = 0; i < (sz - 1); i++)
         {
             current_node = new SequenceNode(nullptr,next_node,"");
             next_node = new SequenceNode(nullptr,current_node,"");
@@ -301,7 +301,7 @@ void Sequence::erase(size_t position, size_t count)
 
     if ((position <= (this->sequence_size - count - 1)) && (count > 0))
     {
-        for (index = 0; index < this->sequence_size; index++)
+        for (int index = 0; index < this->sequence_size; index++)
         {
             current_node = this->head;
             next_node = this->head->get_next();
