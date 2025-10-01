@@ -22,15 +22,15 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     {
         current_node = new SequenceNode(nullptr,nullptr,"");
         next_node = new SequenceNode(nullptr,current_node,"");
-        current_node->get_next() = next_node;
+        current_node->set_next(next_node);
         
         this->head = current_node;
         for (int i = 0; i < (sz - 1); i++)
         {
             current_node = new SequenceNode(nullptr,next_node,"");
             next_node = new SequenceNode(nullptr,current_node,"");
-            current_node->get_next() = next_node;
-            this->tail = next_node;
+            current_node->set_next(next_node);
+            this->set_tail(next_node);
         }
         return;
     }
@@ -46,13 +46,23 @@ Sequence::Sequence(const Sequence& s)
     }
     else
     {
-        this->sequence_size = s.sequence_size;
-        this->head = s.head;
-        this->tail = s.tail; 
+        this->set_size(s.sequence_size);
+        this->set_head(s.head);
+        this->set_tail(s.tail);
     }
     return;
 }
-
+size_t Sequence::set_size(size_t size_value) const
+{
+    if (size_value >= 0)
+    {
+        this->sequence_size = size_value;
+    }
+    else
+    {
+        throw std::exception();
+    }
+}
 // Getter for size
 size_t Sequence::size() const
 {
@@ -77,7 +87,7 @@ SequenceNode* Sequence::get_tail() const
 // Setter for tail
 void Sequence::set_tail(SequenceNode* tail_value)
 {
-    this->tail = turn_value;
+    this->tail = tail_value;
     return;
 }
 
@@ -95,9 +105,9 @@ Sequence& Sequence::operator=(const Sequence& s)
 {
     if (s.sequence_size >= 0) 
     {
-        this->sequence_size = s.sequence_size;
-        this->head = s.head;
-        this->tail = s.tail;
+        this->set_size(s.sequence_size);
+        this->set_head(s.head);
+        this->set_tail(s.tail);
         return *this;
     }
     else
@@ -139,8 +149,8 @@ void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node;
     new_node = new SequenceNode(nullptr, this->tail, item);
-    this->tail->get_next() = new_node;
-    this->tail = new_node;
+    this->tail->set_next(new_node);
+    this->set_tail(new_node);
     return;
 }
 // The value of int item is append to the sequence.
@@ -164,7 +174,7 @@ void Sequence::pop_back()
 
         new_tail = this->tail->get_prev();
         delete(this->tail);
-        this->tail = new_tail;
+        this->set_tail(new_tail);
     }
     else
     {
@@ -238,7 +248,7 @@ void Sequence::clear()
     SequenceNode* curr_tail;
     SequenceNode* prev_node;
 
-    curr_tail = this->tail;
+    curr_tail = this->get_tail();
     prev_node = curr_tail->get_prev();
     delete(curr_tail);
     while (prev_node != nullptr)
@@ -247,9 +257,9 @@ void Sequence::clear()
         prev_node = curr_tail->get_prev();
         delete(curr_tail);
     }
-    this->head = nullptr;
-    this->tail = nullptr;
-    this->sequence_size = 0;
+    this->set_head(nullptr);
+    this->set_tail(nullptr);
+    this->set_size(0);
     return;
 }
 // The item at position is removed from the sequence, and the memory
@@ -259,31 +269,31 @@ void Sequence::erase(size_t position)
     SequenceNode* erase_node_next;
     SequenceNode* erase_node_prev;
     SequenceNode* node_to_erase;
-    SequenceNode* iter_node_next;
-    int current_size
+    SequenceNode* iter_node_next
+    int current_size;
     int last_ind = this->last_index();
     if ((position >= 0) && (position <= last_ind)) 
     {
         // find node_to_erase
         node_to_erase = this->head;
         iter_node_next = this->head->get_next();
-        while (iter_next_node != nullptr)
+        while (iter_node_next != nullptr)
         {
-            node_to_erase = iter_next_node;
-            iter_next_node = node_to_erase->get_next();
+            node_to_erase = iter_node_next;
+            iter_node_next = node_to_erase->get_next();
         }
 
         // Get previous and next node of the node being erased
         erase_node_next = node_to_erase->get_next();
         erase_node_prev = node_to_erase->get_prev();
         // Connect the two nodes so that the erase doesn't create a gap
-        erase_node_next->get_prev() = erase_node_prev;
-        erase_node_prev->get_next() = erase_node_next;
+        erase_node_next->set_prev(erase_node_prev);
+        erase_node_prev->set_next(erase_node_next);
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
-        current_size = this->sequence_size;
-        this->sequence_size -= 1;
+        current_size = this->size();
+        this->set_size(current_size - 1);
     }
     else
     {
@@ -304,7 +314,7 @@ void Sequence::erase(size_t position, size_t count)
     {
         for (int index = 0; index < this->sequence_size; index++)
         {
-            current_node = this->head;
+            current_node = this->get_head();
             next_node = this->head->get_next();
             if ((index >= position) && (index < end_index))
             {
@@ -335,7 +345,7 @@ std::ostream& operator<<(std::ostream& os, const Sequence& s)
     os << "<";
     
     // Initial head cell case
-    current_node = s.head;
+    current_node = s.get_head();
     next_node = s.head->get_next();
     if (current_node->get_item().empty())
     {
