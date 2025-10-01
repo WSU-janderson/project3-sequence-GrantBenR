@@ -14,8 +14,8 @@ class Sequence
         Sequence();
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
-        void Sequence::set_size(size_t size_value);
-        void Sequence::set_size(int size_value);
+        void set_size(size_t size_value);
+        void set_size(int size_value);
         size_t size() const;
         SequenceNode* get_head() const;
         void set_head(SequenceNode* head_value);

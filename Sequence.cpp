@@ -83,7 +83,7 @@ void Sequence::set_size(int size_value)
     {
         throw std::invalid_argument("Cannot convert negative int to size_t");
     }
-    return
+    return;
 }
 // Getter for size
 size_t Sequence::size() const
