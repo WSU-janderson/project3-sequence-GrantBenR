@@ -100,7 +100,6 @@ bool SequenceTest::TEST_S_tilde_Sequence()
 {
     std::cout << "- - Sequence::~Sequence() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
-    ~Sequence(test_sequence);
     return true;
 }
 bool SequenceTest::TEST_S_operator_equals()
