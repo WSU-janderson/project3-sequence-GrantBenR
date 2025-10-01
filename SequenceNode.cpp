@@ -1,6 +1,7 @@
 #include <string>
 #include <ostream>
 #include "SequenceNode.h"
+
 SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
 {
     std::string empty_string = "";
@@ -21,7 +22,7 @@ SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
 }
 
 // SequenceNode.item getter
-std::string SequenceNode::get_item()
+std::string SequenceNode::get_item() const
 {
     return this->item;
 }
@@ -38,7 +39,7 @@ void SequenceNode::set_item(int item_value)
     return;
 }
 // SequenceNode.next getter
-SequenceNode* SequenceNode::get_next()
+SequenceNode* SequenceNode::get_next() const
 {
     return this->next;
 }
@@ -49,7 +50,7 @@ void SequenceNode::set_next(SequenceNode* next_value)
     return;
 }
 // SequenceNode.next getter
-SequenceNode* SequenceNode::get_prev()
+SequenceNode* SequenceNode::get_prev() const
 {
     return this->prev;
 }
