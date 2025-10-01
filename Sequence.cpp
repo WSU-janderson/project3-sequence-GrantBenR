@@ -364,11 +364,31 @@ int Sequence::last_index()
 }
 bool Sequence::operator==(const Sequence& s) const 
 {
-    return (this->get_head() == s.get_head()) && (this->get_tail() == s.get_tail()) && (this->size() == s.size());
+    if (s != nullptr)
+    {
+        bool are_head_equal = (this->get_head() == s.get_head());
+        bool are_tail_equal = (this->get_tail() == s.get_tail());
+        bool are_size_equal = (this->size() == s.size());
+        return (are_head_equal && are_tail_equal && are_size_equal);
+    }
+    else
+    {
+        return false;  
+    } 
 }
 bool Sequence::operator!=(const Sequence& s) const 
 {
-    return !((this->get_head() == s.get_head()) && (this->get_tail() == s.get_tail()) && (this->size() == s.size()));
+    if (s != nullptr)
+    {
+        bool are_head_equal = (this->get_head() == s.get_head());
+        bool are_tail_equal = (this->get_tail() == s.get_tail());
+        bool are_size_equal = (this->size() == s.size());
+        return !(are_head_equal && are_tail_equal && are_size_equal);
+    }
+    else
+    {
+        return true;
+    }    
 }
 // Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
 // stream. This is *not* a method of the Sequence class, but instead it is a

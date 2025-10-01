@@ -117,11 +117,32 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
 }
 bool SequenceNode::operator==(const SequenceNode& sn) const 
 {
-    return (this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev());
+    if (sn != nullptr)
+    {
+        bool are_items_equal = (this->get_item() == sn.get_item());
+        bool are_next_equal = (this->get_next() == sn.get_next());
+        bool are_prev_equal = (this->get_prev() == sn.get_prev());
+        return (are_items_equal && are_next_equal && are_prev_equal);
+    }
+    else
+    {
+        return false;
+    }
+    
 }
 bool SequenceNode::operator!=(const SequenceNode& sn) const 
 {
-    return !((this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev()));
+    if (sn != nullptr)
+    {
+        bool are_items_equal = (this->get_item() == sn.get_item());
+        bool are_next_equal = (this->get_next() == sn.get_next());
+        bool are_prev_equal = (this->get_prev() == sn.get_prev());
+        return !(are_items_equal && are_next_equal && are_prev_equal);
+    }
+    else
+    {
+        return true;
+    }
 }
 std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
 {

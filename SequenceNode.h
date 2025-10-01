@@ -6,10 +6,10 @@
 class SequenceNode 
 {
     private:
+    public:
         SequenceNode* next; // ptr to next node
         SequenceNode* prev; // ptr to prev node
         std::string item; // string contents of node
-    public:
         SequenceNode();// empty constructor
         SequenceNode(std::string item_value);
         SequenceNode(int item_value);
