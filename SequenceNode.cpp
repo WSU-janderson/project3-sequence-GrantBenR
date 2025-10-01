@@ -73,6 +73,7 @@ SequenceNode& SequenceNode::operator=(const std::string& item_value)
 // What happens when you go sequence[i] = int
 SequenceNode& SequenceNode::operator=(const int item_value)
 {
+    cout <<"ping";
     this->set_item(item_value);
     return *this;
 }
