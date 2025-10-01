@@ -27,7 +27,6 @@ class SequenceNode
         SequenceNode& operator=(const int item_value);
         SequenceNode& operator=(const SequenceNode& sn);
         friend std::ostream& operator<<(std::ostream& os, const SequenceNode& s);
-
 };
 
 #endif

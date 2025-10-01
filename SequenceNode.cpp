@@ -87,12 +87,12 @@ void SequenceNode::set_prev(SequenceNode* prev_value)
     if (this->get_prev() != nullptr)
     {
         // if old prev has values, copy them
-        this->prev = new SequenceNode(prev_value->get_item(), this*, this->get_prev()->get_prev());
+        this->prev = new SequenceNode(prev_value->get_item(), this, this->get_prev()->get_prev());
     }
     else
     {
         // if old prev does not have values, use nullptr
-        this->prev = new SequenceNode(prev_value->get_item(), this*, nullptr);
+        this->prev = new SequenceNode(prev_value->get_item(), this, nullptr);
     }
     return;
 }
