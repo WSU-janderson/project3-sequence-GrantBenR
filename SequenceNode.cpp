@@ -67,12 +67,12 @@ void SequenceNode::set_next(SequenceNode* next_value)
     if (this->get_next() != nullptr)
     {
         // if old next has properties copy them
-        this->next = new SequenceNode(next_value->get_item(), this->get_next()->get_next(), this*);
+        this->next = new SequenceNode(next_value->get_item(), this->get_next()->get_next(), this);
     }
     else
     {
         // if old next does not have properties, use nullptr
-        this->next = new SequenceNode(next_value->get_item(), nullptr, this*);
+        this->next = new SequenceNode(next_value->get_item(), nullptr, this);
     }
     return;
 }
