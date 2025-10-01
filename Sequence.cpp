@@ -132,30 +132,23 @@ Sequence& Sequence::operator=(const Sequence& s)
 // of the sequence
 std::string& Sequence::operator[](size_t position)
 {
-    static const std::string& empty_string = "";
-    std::string return_value = "";
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        SequenceNode* current_node;
-        SequenceNode* next_node;
-        
-
-        current_node = this->head;
-        next_node = this->head->get_next();
-        return_value = current_node->get_item();
-        while (next_node != nullptr)
+        SequenceNode* current_node = this->head;
+        for (size_t i = 0; i < position; ++i) 
         {
-            current_node = next_node;
-            next_node = current_node->get_next();
-            return_value = current_node->get_item();
+            if (current_node == nullptr) {
+                throw std::out_of_range("Index out of range");
+            }
+            current_node = current_node->get_next();
         }
-        return &return_value;
+
+        // Assuming get_item() returns std::string&
+        return current_node->get_item();
     }
     else
     {
         throw std::exception();
-        return empty_string;
-        
     }
 }
 // The value of string item is append to the sequence.
