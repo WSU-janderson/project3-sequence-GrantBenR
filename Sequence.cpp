@@ -22,14 +22,14 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     {
         current_node = new SequenceNode(nullptr,nullptr,"");
         next_node = new SequenceNode(nullptr,current_node,"");
-        current_node->next() = &next_node;
+        current_node->get_next() = &next_node;
         
         this->head = &current_node;
         for (i = 0; i < (sz - 1); i++)
         {
             current_node = new SequenceNode(nullptr,next_node,"");
             next_node = new SequenceNode(nullptr,current_node,"");
-            current_node->next() = &next_node;
+            current_node->get_next() = &next_node;
             this->tail = &next_node;
         }
         return;
@@ -120,11 +120,11 @@ std::string& Sequence::operator[](size_t position)
         int index = 0;
 
         current_node = this->head;
-        next_node = this->head->next();
+        next_node = this->head->get_next();
         while (next_node != nullptr)
         {
             current_node = &next_node;
-            next_node = current_node->next();
+            next_node = current_node->get_next();
             index += 1;
         } 
     }
@@ -139,7 +139,7 @@ void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node;
     new_node = new SequenceNode(nullptr, this->tail, item);
-    this->tail->next() = &new_node;
+    this->tail->get_next() = &new_node;
     this->tail = &new_node;
     return;
 }
@@ -162,7 +162,7 @@ void Sequence::pop_back()
         current_size = this->sequence_size;
         this->sequence_size = (current_size - 1);
 
-        new_tail = this->tail->prev();
+        new_tail = this->tail->get_prev();
         delete(this->tail);
         this->tail = &new_tail;
     }
@@ -200,7 +200,7 @@ std::string Sequence::front() const
 {
     if (!(this->empty())) 
     {
-        return this->head->item();
+        return this->head->get_item();
     }
     else
     {
@@ -216,7 +216,7 @@ std::string Sequence::back() const
     {
         throw std::exception();
     }
-    return this->tail->item();
+    return this->tail->get_item();
 }
 // Return true if the sequence has no elements, otherwise false.
 bool Sequence::empty() const
@@ -239,12 +239,12 @@ void Sequence::clear()
     SequenceNode* prev_node;
 
     curr_tail = this->tail;
-    prev_node = curr_tail->prev();
+    prev_node = curr_tail->get_prev();
     delete(curr_tail);
     while (prev_node != nullptr)
     {
         curr_tail = &prev_node;
-        prev_node = curr_tail->prev();
+        prev_node = curr_tail->get_prev();
         delete(curr_tail)
     }
     this->head = nullptr;
@@ -264,11 +264,11 @@ void Sequence::erase(size_t position)
     {
         node_to_erase = this[position];
         // Get previous and next node of the node being erased
-        node_next = node_to_erase->next();
-        node_prev = node_to_erase->prev();
+        node_next = node_to_erase->get_next();
+        node_prev = node_to_erase->get_prev();
         // Connect the two nodes so that the erase doesn't create a gap
-        node_next->prev()() = &node_prev;
-        node_prev->next()() = &node_next;
+        node_next->get_prev()() = &node_prev;
+        node_prev->get_next()() = &node_next;
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
@@ -295,7 +295,7 @@ void Sequence::erase(size_t position, size_t count)
         for (index = 0; index < this->sequence_size; index++)
         {
             current_node = this->head;
-            next_node = this->head->next();
+            next_node = this->head->get_next();
             if ((index >= position) && (index < end_index))
             {
                 delete(current_node);
@@ -326,14 +326,14 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     
     // Initial head cell case
     current_node = s.head;
-    next_node = s.head->get_next();
-    if (current_node->get_item().isEmpty())
+    next_node = s.head->get_get_next();
+    if (current_node->get_get_item().isEmpty())
     {
         os << "null";
     }
     else
     {
-        os << current_node->get_item();
+        os << current_node->get_get_item();
     }
     if (next_node != nullptr)
     {
@@ -344,14 +344,14 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     while (next_node != nullptr)
     {
         current_node = &next_node;
-        next_node = current_node->get_next();
-        if (current_node->item().isEmpty())
+        next_node = current_node->get_get_next();
+        if (current_node->get_item().isEmpty())
         {
             os << "null";
         }
         else
         {
-            os << current_node->get_item();
+            os << current_node->get_get_item();
         }
         os << ",";
     }
