@@ -32,6 +32,7 @@ bool SequenceNodeTest::TEST_SN_SequenceNode()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // parameterized constructor with string
@@ -60,6 +61,7 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_string()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // parameterized constructor with int
@@ -88,6 +90,7 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_int()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // getter for item
@@ -104,6 +107,7 @@ bool SequenceNodeTest::TEST_SN_get_item()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // getter for item reference
@@ -120,6 +124,7 @@ bool SequenceNodeTest::TEST_SN_get_item_ref()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // setter for item with string
@@ -137,6 +142,7 @@ bool SequenceNodeTest::TEST_SN_set_item_string()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // setter for item with int
@@ -154,6 +160,7 @@ bool SequenceNodeTest::TEST_SN_set_item_int()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // getter for next
@@ -169,6 +176,7 @@ bool SequenceNodeTest::TEST_SN_get_next()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // setter for next
@@ -187,6 +195,7 @@ bool SequenceNodeTest::TEST_SN_set_next()
     delete test_node;
     delete next_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // getter for prev
@@ -202,6 +211,7 @@ bool SequenceNodeTest::TEST_SN_get_prev()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }   
 // setter for prev
@@ -220,6 +230,7 @@ bool SequenceNodeTest::TEST_SN_set_prev()
     delete test_node;
     delete prev_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // operator= with string
@@ -237,6 +248,7 @@ bool SequenceNodeTest::TEST_SN_operator_equals_string()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // operator= with int
@@ -254,6 +266,7 @@ bool SequenceNodeTest::TEST_SN_operator_equals_int()
     }
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // operator= with SequenceNode
@@ -273,6 +286,7 @@ bool SequenceNodeTest::TEST_SN_operator_equals_SequenceNode()
     delete test_node;
     delete other_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
 // operator<< for ostream
@@ -283,5 +297,6 @@ bool SequenceNodeTest::TEST_SN_operator_ostream()
     std::cout << "Node: " << *test_node << std::endl;
     delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
+    std::cout << std::endl;
     return true;
 }
