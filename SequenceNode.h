@@ -13,6 +13,7 @@ class SequenceNode
         SequenceNode();// empty constructor
         SequenceNode(std::string item_value);
         SequenceNode(int item_value);
+        SequenceNode(std::string item_value, SequenceNode* next_value, SequenceNode* prev_value);
         SequenceNode(int item_value, SequenceNode* next_value, SequenceNode* prev_value);
         std::string get_item() const;
         std::string& get_item_ref();

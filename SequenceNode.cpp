@@ -23,8 +23,14 @@ SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
     this->set_item(item_value);
     return;
 }
-SequenceNode::SequenceNode(int item_value, SequenceNode* next_value, SequenceNode* prev_value) : item(item_value), next(next_value), prev(prev_value)
+SequenceNode::SequenceNode(std::string item_value, SequenceNode* next_value, SequenceNode* prev_value) : next(next_value), prev(prev_value)
 {
+    this->set_item(item_value);
+    return;
+}
+SequenceNode::SequenceNode(int item_value, SequenceNode* next_value, SequenceNode* prev_value) : next(next_value), prev(prev_value)
+{
+    this->set_item(item_value);
     return;
 }
 
