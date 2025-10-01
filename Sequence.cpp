@@ -202,7 +202,7 @@ void Sequence::insert(size_t position, std::string item)
 }
 void Sequence::insert(size_t position, int item)
 {
-    this->insert(std::to_string(item))
+    this->insert(position, std::to_string(item))
     return;
 }
 // Returns the first element in the sequence. If the sequence is empty, throw an exception.
