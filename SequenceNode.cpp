@@ -3,7 +3,8 @@
 #include "SequenceNode.h"
 SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
 {
-    this->set_item("");
+    std::string empty_string = "";
+    this->set_item(empty_string);
     return;
 }
 /// parameterized constructor, next and prev are set to nullptr and the

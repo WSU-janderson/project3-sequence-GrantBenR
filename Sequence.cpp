@@ -20,15 +20,19 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     }
     else
     {
-        current_node = new SequenceNode("");
-        next_node = new SequenceNode(nullptr,current_node,"");
+        current_node = new SequenceNode();
+        next_node = new SequenceNode();
+        next_node->set_prev(current_node)
         current_node->set_next(next_node);
         
         this->head = current_node;
         for (int i = 0; i < (sz - 1); i++)
         {
-            current_node = new SequenceNode(nullptr,next_node,"");
-            next_node = new SequenceNode(nullptr,current_node,"");
+            current_node = new SequenceNode();
+            current_node->set_prev(next_node);
+            
+            next_node = new SequenceNode();
+            next_node->set_prev(current_node)
             current_node->set_next(next_node);
             this->set_tail(next_node);
         }
