@@ -22,8 +22,10 @@ class Sequence
         Sequence& operator=(const Sequence& s);
         std::string& operator[](size_t position);
         void push_back(std::string item);
+        void push_back(int item);
         void pop_back();
         void insert(size_t position, std::string item);
+        void insert(size_t position, int item);
         std::string front() const;
         std::string back() const;
         bool empty() const;
