@@ -115,6 +115,14 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
     this->set_prev(sn.get_prev());
     return *this;
 }
+bool SequenceNode::operator==(const SequenceNode& sn) const 
+{
+    return (this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev())
+}
+bool SequenceNode::operator!=(const SequenceNode& sn) const 
+{
+    return !((this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev()))
+}
 std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
 {
     os << "{item: \"" << s.get_item();

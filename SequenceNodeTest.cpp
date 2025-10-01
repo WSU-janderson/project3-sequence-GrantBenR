@@ -168,7 +168,7 @@ bool SequenceNodeTest::TEST_SN_get_next()
 {
     std::cout << "- - SequenceNode::get_next() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
-    std::cout << "Next: " << test_node->get_next() << std::endl;
+    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: get_next() did not return: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl;
@@ -203,7 +203,7 @@ bool SequenceNodeTest::TEST_SN_get_prev()
 {
     std::cout << "- - SequenceNode::get_prev() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
-    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: get_prev() did not return: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl;
@@ -221,7 +221,7 @@ bool SequenceNodeTest::TEST_SN_set_prev()
     SequenceNode* test_node = new SequenceNode("test");
     SequenceNode* prev_node = new SequenceNode("prev");
     test_node->set_prev(prev_node);
-    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
     if (test_node->get_prev() != prev_node) {
         std::cout << "Error: Prev is not set to the correct node." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl;

@@ -26,6 +26,8 @@ class SequenceNode
         SequenceNode& operator=(const std::string& item_value);
         SequenceNode& operator=(const int item_value);
         SequenceNode& operator=(const SequenceNode& sn);
+        bool operator==(const SequenceNode& sn) const;
+        bool operator!=(const SequenceNode& sn) const;
         friend std::ostream& operator<<(std::ostream& os, const SequenceNode& s);
 };
 
