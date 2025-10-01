@@ -113,7 +113,7 @@ Sequence& Sequence::operator=(const Sequence& s)
     else
     {
         throw std::exception();
-        return nullptr;
+        return *this;
     }
     
 }
@@ -127,7 +127,7 @@ std::string& Sequence::operator[](size_t position)
     {
         SequenceNode* current_node;
         SequenceNode* next_node;
-        std::string return_val;
+        std::string return_value;
 
         current_node = this->head;
         next_node = this->head->get_next();
@@ -135,14 +135,16 @@ std::string& Sequence::operator[](size_t position)
         {
             current_node = next_node;
             next_node = current_node->get_next();
-            return_val = current_node->get_item();
+            return_value = current_node->get_item();
         } 
+        return return_value;
     }
     else
     {
         throw std::exception();
+        return "";
     }
-    return;
+    
 }
 // The value of string item is append to the sequence.
 void Sequence::push_back(std::string item)
