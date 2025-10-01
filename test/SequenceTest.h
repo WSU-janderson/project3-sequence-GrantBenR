@@ -1,11 +1,11 @@
-#ifndef SEQUENCE_DEBUG_H
-#define SEQUENCE_DEBUG_H
+#ifndef SEQUENCE_TEST_H
+#define SEQUENCE_TEST_H
 
 #include <string>
 #include <ostream>
 #include "Sequence.h"
 #include "SequenceNode.h"
-class Sequence 
+class SequenceTest
 {
     private:
 
