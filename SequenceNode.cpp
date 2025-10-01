@@ -96,7 +96,7 @@ std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
     {
         os << s.get_next()->get_item();
     }
-    os << "\", prev: \""
+    os << "\", prev: \"";
     if (s.get_prev() == nullptr) 
     {
         os << "nullptr";
