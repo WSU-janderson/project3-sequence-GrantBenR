@@ -54,12 +54,12 @@ SequenceNode* SequenceNode::get_next() const
 void SequenceNode::set_next(SequenceNode* next_value)
 {
     // make sure the new next value, has a prev value of the current node
-    next_value.get_prev() = *this;
+    next_value->get_prev() = *this;
     // If next already exists, copy its next values to our new one
     if (this->get_next() != nullptr)
     {   
         // do the same for the new next values's next value (this is confusing as crap)
-        next_value.get_next() = (this->get_next()->get_next());
+        next_value->get_next() = (this->get_next()->get_next());
     }
     this->next = next_value;
     return;
@@ -73,12 +73,12 @@ SequenceNode* SequenceNode::get_prev() const
 void SequenceNode::set_prev(SequenceNode* prev_value)
 {
     // make sure the new prev value, has a next value of the current node
-    prev_value.get_next() = *this;
+    prev_value->get_next() = *this;
     // If prev already exists, copy its prev values to our new one
     if (this->get_prev() != nullptr)
     {   
         // do the same for the new next values's next value
-        next_value.get_prev() = (this->get_prev()->get_prev());
+        prev_value->get_prev() = (this->get_prev()->get_prev());
     }
     this->prev = prev_value;
     return;
