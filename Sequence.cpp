@@ -6,7 +6,7 @@
 
 // Creates an empty sequence (numElts == 0) or a sequence of numElts items
 // indexed from 0 ... (numElts - 1).
-Sequence::Sequence(size_t sz = 0) : size(sz), head(nullptr), tail(nullptr)
+Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullptr)
 {
     if (sz < 0) 
     {
@@ -41,13 +41,13 @@ Sequence::Sequence(size_t sz = 0) : size(sz), head(nullptr), tail(nullptr)
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
-    if (s.size < 0) 
+    if (s.sequence_size < 0) 
     {
         throw exception();
     }
     else
     {
-        this->size = s.size;
+        this->sequence_size = s.sequence_size;
         this->head = s.head;
         this->tail = s.tail; 
     }
@@ -57,7 +57,7 @@ Sequence::Sequence(const Sequence& s)
 // Getter for size
 size_t Sequence::size() const
 {
-    return this->size;
+    return this->sequence_size;
 }
 // Getter for head
 SequenceNode* Sequence::get_head() const
@@ -94,9 +94,9 @@ Sequence::~Sequence()
 // s. A reference to the copied sequence is returned (return *this;).
 Sequence& Sequence::operator=(const Sequence& s)
 {
-    if (s.size >= 0) 
+    if (s.sequence_size >= 0) 
     {
-        this->size = s.size;
+        this->sequence_size = s.sequence_size;
         this->head = s.head;
         this->tail = s.tail;
         return *this;
@@ -150,8 +150,8 @@ void Sequence::pop_back()
     if (!(this->empty())) 
     {
         
-        int current_size = this->size;
-        this->size = (current_size - 1);
+        int current_size = this->sequence_size;
+        this->sequence_size = (current_size - 1);
 
         SequenceNode* new_tail = this->tail->prev();
         delete(this->tail);
@@ -171,8 +171,8 @@ void Sequence::insert(size_t position, std::string item)
 {
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        int current_size = this->size;
-        this->size = (current_size + 1);
+        int current_size = this->sequence_size;
+        this->sequence_size = (current_size + 1);
     }
     else
     {
@@ -206,7 +206,7 @@ std::string Sequence::back() const
 // Return true if the sequence has no elements, otherwise false.
 bool Sequence::empty() const
 {
-    if (this->size > 0)
+    if (this->sequence_size > 0)
     {
         return false;
     }
@@ -234,7 +234,7 @@ void Sequence::clear()
     }
     this->head = nullptr;
     this->tail = nullptr;
-    this->size = 0;
+    this->sequence_size = 0;
     return;
 }
 // The item at position is removed from the sequence, and the memory
@@ -253,8 +253,8 @@ void Sequence::erase(size_t position)
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
-        int current_size = this->size;
-        this->size -= 1;
+        int current_size = this->sequence_size;
+        this->sequence_size -= 1;
     }
     else
     {
@@ -270,9 +270,9 @@ void Sequence::erase(size_t position, size_t count)
     int end_index = (position + count - 1);
     SequenceNode* current_node_to_erase;
 
-    if ((position <= (this->size - count - 1)) && (count > 0))
+    if ((position <= (this->sequence_size - count - 1)) && (count > 0))
     {
-        for (index = 0; index < this->size; index++)
+        for (index = 0; index < this->sequence_size; index++)
         {
             current_node = this->head;
             NextNode = this->head->next();
@@ -290,7 +290,7 @@ void Sequence::erase(size_t position, size_t count)
 }
 int Sequence::last_index()
 {
-    return (this->size - 1);
+    return (this->sequence_size - 1);
 }
 // Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
 // stream. This is *not* a method of the Sequence class, but instead it is a

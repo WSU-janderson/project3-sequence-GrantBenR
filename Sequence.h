@@ -9,7 +9,7 @@ class Sequence
     private:
         SequenceNode* head; // ptr to first node
         SequenceNode* tail; // ptr to last node
-        size_t size; // number of items in the sequence
+        size_t sequence_size; // number of items in the sequence
     public:
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
