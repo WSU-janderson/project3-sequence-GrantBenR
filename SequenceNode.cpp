@@ -20,7 +20,7 @@ std::string SequenceNode::get_item()
 void SequenceNode::set_item(std::string item_value)
 {
     this->item = item_value;
-    return
+    return;
 }
 // SequenceNode.next getter
 SequenceNode* SequenceNode::get_next()
@@ -31,7 +31,7 @@ SequenceNode* SequenceNode::get_next()
 void SequenceNode::set_next(SequenceNode* next_value)
 {
     this->item = item_value;
-    return
+    return;
 }
 // SequenceNode.next getter
 SequenceNode* SequenceNode::get_prev()
@@ -42,5 +42,5 @@ SequenceNode* SequenceNode::get_prev()
 void SequenceNode::set_prev(SequenceNode* prev_value)
 {
     this->item = item_value;
-    return
+    return;
 }
