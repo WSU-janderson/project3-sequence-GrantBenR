@@ -261,7 +261,8 @@ void Sequence::erase(size_t position)
     SequenceNode* node_to_erase;
     SequenceNode* iter_node_next;
     int current_size
-    if ((position >= 0) && (position <= this->last_index())) 
+    int last_ind = this->last_index();
+    if ((position >= 0) && (position <= last_ind)) 
     {
         // find node_to_erase
         node_to_erase = this->head;
@@ -324,7 +325,7 @@ int Sequence::last_index()
 // Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
 // stream. This is *not* a method of the Sequence class, but instead it is a
 // friend function
-friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
+std::ostream& operator<<(std::ostream& os, const Sequence& s)
 {
     SequenceNode* current_node;
     SequenceNode* next_node;
