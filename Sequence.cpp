@@ -262,7 +262,7 @@ void Sequence::erase(size_t position)
 
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        node_to_erase = this[position];
+        node_to_erase = (*this)[position];
         // Get previous and next node of the node being erased
         node_next = node_to_erase->get_next();
         node_prev = node_to_erase->get_prev();
