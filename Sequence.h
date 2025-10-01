@@ -11,6 +11,7 @@ class Sequence
         SequenceNode* tail; // ptr to last node
         size_t sequence_size; // number of items in the sequence
     public:
+        Sequence();
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
         size_t set_size(size_t size_value);
