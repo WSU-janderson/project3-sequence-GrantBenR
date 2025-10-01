@@ -86,6 +86,6 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
 }
 std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
 {
-    os << "{item: \"" << s.get_head()->get_item() << "\", next: \"" << s.get_next()->get_item() << "\", prev: \"" << s.get_prev()->get_item() << "\"}"
-    return os;
+    os << "{item: \"" << s.get_item() << "\", next: \"" << s.get_next()->get_item() << "\", prev: \"" << s.get_prev()->get_item() << "\"}";
+    return os;`
 }
