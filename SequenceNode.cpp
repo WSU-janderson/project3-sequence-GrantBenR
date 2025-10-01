@@ -65,13 +65,13 @@ void SequenceNode::set_prev(SequenceNode* prev_value)
     return;
 }
 // What happens when you go sequence[i] = string
-SequenceNode& SequenceNode::operator=(const std::string item_value)
+SequenceNode& SequenceNode::operator=(const std::string& item_value)
 {
     this->set_item(item_value);
     return *this;
 }
 // What happens when you go sequence[i] = int
-SequenceNode& SequenceNode::operator=(const int item_value)
+SequenceNode& SequenceNode::operator=(const int& item_value)
 {
     this->set_item(item_value);
     return *this;
