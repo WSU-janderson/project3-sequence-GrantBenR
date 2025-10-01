@@ -10,6 +10,12 @@ class Sequence
     public:
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
+        size_t Sequence::size() const;
+        void Sequence::size(size_t size_value)
+        SequenceNode* Sequence::head() const
+        void Sequence::head(SequenceNode* head_value)
+        SequenceNode* Sequence::tail() const
+        void Sequence::tail(SequenceNode* tail_value)
         ~Sequence();
         Sequence& operator=(const Sequence& s);
         std::string& Sequence::operator[](size_t position);
@@ -19,9 +25,7 @@ class Sequence
         std::string Sequence::front() const;
         std::string Sequence::back() const;
         bool Sequence::empty() const;
-        size_t Sequence::size() const;
-        SequenceNode* Sequence::head() const
-        SequenceNode* Sequence::tail() const
+        
         void Sequence::clear();
         void Sequence::erase(size_t position);
         void Sequence::erase(size_t position, size_t count);

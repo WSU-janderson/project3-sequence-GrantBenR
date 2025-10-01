@@ -53,6 +53,41 @@ Sequence::Sequence(const Sequence& s)
     }
     return;
 }
+
+// Getter for size
+size_t Sequence::size() const
+{
+    return this->size;
+}
+// Setter for size
+void Sequence::size(size_t size_value)
+{
+    this->size = size_value;
+    return;
+}
+// Getter for head
+SequenceNode* Sequence::head() const
+{
+    return this->head;
+}
+// Setter for head
+void Sequence::head(SequenceNode* head_value)
+{
+    this->head = head_value;
+    return;
+}
+// Getter for tail
+SequenceNode* Sequence::tail() const
+{
+    return this->tail;
+}
+// Setter for tail
+void Sequence::tail(SequenceNode* tail_value)
+{
+    this->tail = turn_value;
+    return;
+}
+
 // Destroys all items in the sequence and release the memory
 // associated with the sequence
 Sequence::~Sequence()
@@ -185,21 +220,6 @@ bool Sequence::empty() const
     {
         return true;
     }
-}
-// Return the number of elements in the sequence.
-size_t Sequence::size() const
-{
-    return this->size;
-}
-// Return the head* of the sequence
-SequenceNode* Sequence::head() const
-{
-    return this->head;
-}
-// Return the tail* of the sequence
-SequenceNode* Sequence::tail() const
-{
-    return this->tail;
 }
 // All items in the sequence are deleted and the memory associated with the
 // sequence is released, resetting the sequence to an empty state that can have
