@@ -45,7 +45,7 @@ SequenceNode* SequenceNode::get_next()
 // SequenceNode.next setter
 void SequenceNode::set_next(SequenceNode* next_value)
 {
-    this->item = next_value;
+    this->next = next_value;
     return;
 }
 // SequenceNode.next getter
@@ -56,7 +56,7 @@ SequenceNode* SequenceNode::get_prev()
 // SequenceNode.prev setter
 void SequenceNode::set_prev(SequenceNode* prev_value)
 {
-    this->item = prev_value;
+    this->prev = prev_value;
     return;
 }
 // What happens when you go sequence[i] = string
