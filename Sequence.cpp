@@ -269,7 +269,7 @@ void Sequence::erase(size_t position)
     SequenceNode* erase_node_next;
     SequenceNode* erase_node_prev;
     SequenceNode* node_to_erase;
-    SequenceNode* iter_node_next
+    SequenceNode* iter_node_next;
     int current_size;
     int last_ind = this->last_index();
     if ((position >= 0) && (position <= last_ind)) 
