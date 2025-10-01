@@ -306,14 +306,14 @@ friend ostream& operator<<(std::ostream& os, const Sequence& s)
     
     // Initial head cell case
     current_node = s.head;
-    NextNode = s.head->next();
-    if (current_node->item().isEmpty())
+    NextNode = s.head->get_next();
+    if (current_node->get_item().isEmpty())
     {
         os << "null";
     }
     else
     {
-        os << current_node->item();
+        os << current_node->get_item();
     }
     if (NexNode != nullptr)
     {
@@ -324,14 +324,14 @@ friend ostream& operator<<(std::ostream& os, const Sequence& s)
     while (NextNode != nullptr)
     {
         current_node = &NextNode;
-        NextNode = current_node->next();
+        NextNode = current_node->get_next();
         if (current_node->item().isEmpty())
         {
             os << "null";
         }
         else
         {
-            os << current_node->item();
+            os << current_node->get_item();
         }
         os << ",";
     }

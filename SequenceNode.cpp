@@ -1,6 +1,6 @@
-#include "SequenceNode.h"
 #include <string>
 #include <ostream>
+#include "SequenceNode.h"
 SequenceNode::SequenceNode()
 {
     this->item("");
