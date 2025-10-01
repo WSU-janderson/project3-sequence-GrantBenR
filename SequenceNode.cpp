@@ -9,7 +9,21 @@ SequenceNode::SequenceNode()
 }
 /// parameterized constructor, next and prev are set to nullptr and the
 /// node's element is set to the given value
-SequenceNode::SequenceNode(std::string item, SequenceNode* next, SequenceNode* prev) : item(item), next(next), prev(prev){}
+SequenceNode::SequenceNode(std::string item, SequenceNode* next, SequenceNode* prev) : 
+item(item), 
+next(next), 
+prev(prev)
+{
+
+}
+
+SequenceNode::SequenceNode(int item, SequenceNode* next, SequenceNode* prev) : 
+item(static_cast<std::string>(item)), 
+next(next), 
+prev(prev)
+{
+
+}
 
 // SequenceNode.item getter
 std::string SequenceNode::get_item()
@@ -20,6 +34,11 @@ std::string SequenceNode::get_item()
 void SequenceNode::set_item(std::string item_value)
 {
     this->item = item_value;
+    return;
+}
+void SequenceNode::set_item(int item_value)
+{
+    this->item = static_cast<std::string>(item_value);
     return;
 }
 // SequenceNode.next getter
