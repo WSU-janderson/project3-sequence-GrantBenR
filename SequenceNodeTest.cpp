@@ -186,7 +186,7 @@ bool SequenceNodeTest::TEST_SN_set_next()
     SequenceNode* test_node = new SequenceNode("test");
     SequenceNode* next_node = new SequenceNode("next");
     test_node->set_next(next_node);
-    std::cout << "Next: " << test_node->get_next() << std::endl;
+    std::cout << "Next: " << &(test_node->get_next()) << std::endl;
     if (test_node->get_next() != next_node) {
         std::cout << "Error: Next is not set to the correct node." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl;
