@@ -75,13 +75,13 @@ void Sequence::set_size(size_t size_value)
 }
 void Sequence::set_size(int size_value)
 {
-    if (my_int < 0) 
+    if (size_value >= 0) 
     {
-        throw std::invalid_argument("Cannot convert negative int to size_t");
+        this->sequence_size = static_cast<size_t>(size_value);
     }
     else
     {
-        this->sequence_size = static_cast<size_t>(size_value);
+        throw std::invalid_argument("Cannot convert negative int to size_t");
     }
     return
 }
