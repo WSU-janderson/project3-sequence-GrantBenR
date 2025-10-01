@@ -132,6 +132,8 @@ Sequence& Sequence::operator=(const Sequence& s)
 // of the sequence
 std::string& Sequence::operator[](size_t position)
 {
+    static const std::string& empty_string = "";
+    std::string return_value = "";
     if ((position >= 0) && (position <= this->last_index())) 
     {
         SequenceNode* current_node;
@@ -140,14 +142,14 @@ std::string& Sequence::operator[](size_t position)
 
         current_node = this->head;
         next_node = this->head->get_next();
-        std::string& return_value = current_node->get_item();
+        return_value = current_node->get_item();
         while (next_node != nullptr)
         {
             current_node = next_node;
             next_node = current_node->get_next();
             return_value = current_node->get_item();
         }
-        return return_value;
+        return &return_value;
     }
     else
     {
