@@ -13,7 +13,7 @@ class Sequence
     public:
         Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullptr) {};
         Sequence(const Sequence& s);
-        size_t set_size(size_t size_value) const;
+        size_t set_size(size_t size_value);
         size_t size() const;
         SequenceNode* get_head() const;
         void set_head(SequenceNode* head_value);

@@ -20,7 +20,7 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     }
     else
     {
-        current_node = new SequenceNode(nullptr,nullptr,"");
+        current_node = new SequenceNode("");
         next_node = new SequenceNode(nullptr,current_node,"");
         current_node->set_next(next_node);
         
@@ -52,7 +52,7 @@ Sequence::Sequence(const Sequence& s)
     }
     return;
 }
-size_t Sequence::set_size(size_t size_value) const
+size_t Sequence::set_size(size_t size_value)
 {
     if (size_value >= 0)
     {
@@ -150,7 +150,8 @@ std::string& Sequence::operator[](size_t position)
 void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node;
-    new_node = new SequenceNode(nullptr, this->tail, item);
+    new_node = new SequenceNode(item);
+    new_node->set_prev(this->get_tail());
     this->tail->set_next(new_node);
     this->set_tail(new_node);
     return;
