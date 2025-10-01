@@ -14,6 +14,7 @@
 #include <iostream>
 
 #include "Sequence.h"
+#include "SequenceNode.h"
 
 const std::string evalName{ "" };
 // #define __GRADING // Leave this commented out for your tests
