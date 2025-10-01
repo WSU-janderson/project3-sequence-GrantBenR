@@ -17,14 +17,6 @@ prev(prev)
 
 }
 
-SequenceNode::SequenceNode(int item, SequenceNode* next, SequenceNode* prev) : 
-item(static_cast<std::string>(item)), 
-next(next), 
-prev(prev)
-{
-
-}
-
 // SequenceNode.item getter
 std::string SequenceNode::get_item()
 {

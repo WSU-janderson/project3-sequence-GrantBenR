@@ -135,12 +135,18 @@ std::string& Sequence::operator[](size_t position)
     }
     return;
 }
-// The value of item is append to the sequence.
+// The value of string item is append to the sequence.
 void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node = new SequenceNode(nullptr, this->tail, item);
     this->tail->next() = &new_node;
     this->tail = &new_node;
+    return;
+}
+// The value of int item is append to the sequence.
+void Sequence::push_back(int item)
+{
+    this->push_back(static_cast<std::string>(item))
     return;
 }
 // The item at the end of the sequence is deleted and size of the sequence is
@@ -178,6 +184,11 @@ void Sequence::insert(size_t position, std::string item)
     {
         throw exception();
     }
+    return;
+}
+void Sequence::insert(size_t position, int item)
+{
+    this->insert(static_cast<std::string>(item))
     return;
 }
 // Returns the first element in the sequence. If the sequence is empty, throw an exception.
