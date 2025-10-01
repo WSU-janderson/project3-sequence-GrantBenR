@@ -327,7 +327,7 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     // Initial head cell case
     current_node = s.head;
     next_node = s.head->get_next();
-    if (current_node->get_item().isEmpty())
+    if (current_node->get_item().empty())
     {
         os << "null";
     }
@@ -345,7 +345,7 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     {
         current_node = &next_node;
         next_node = current_node->get_next();
-        if (current_node->get_item().isEmpty())
+        if (current_node->get_item().empty())
         {
             os << "null";
         }
