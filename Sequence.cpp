@@ -40,15 +40,15 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
-    if (s.sequence_size < 0) 
-    {
-        throw std::exception();
-    }
-    else
+    if (s.sequence_size >= 0) 
     {
         this->set_size(s.sequence_size);
         this->set_head(s.head);
         this->set_tail(s.tail);
+    }
+    else
+    {
+        throw std::exception();
     }
     return;
 }
@@ -123,11 +123,12 @@ Sequence& Sequence::operator=(const Sequence& s)
 // of the sequence
 std::string& Sequence::operator[](size_t position)
 {
+    std::string& return_value = "";
     if ((position >= 0) && (position <= this->last_index())) 
     {
         SequenceNode* current_node;
         SequenceNode* next_node;
-        std::string return_value;
+        
 
         current_node = this->head;
         next_node = this->head->get_next();
@@ -136,15 +137,14 @@ std::string& Sequence::operator[](size_t position)
             current_node = next_node;
             next_node = current_node->get_next();
             return_value = current_node->get_item();
-        } 
-        return return_value;
+        }
     }
     else
     {
         throw std::exception();
-        return "";
+        
     }
-    
+    return return_value;
 }
 // The value of string item is append to the sequence.
 void Sequence::push_back(std::string item)
