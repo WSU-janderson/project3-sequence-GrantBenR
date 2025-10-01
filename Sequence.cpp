@@ -117,7 +117,7 @@ std::string& Sequence::operator[](size_t position)
     {
         SequenceNode* current_node;
         SequenceNode* next_node;
-        int index = 0;
+        std::string return_val;
 
         current_node = this->head;
         next_node = this->head->get_next();
@@ -125,7 +125,7 @@ std::string& Sequence::operator[](size_t position)
         {
             current_node = next_node;
             next_node = current_node->get_next();
-            index += 1;
+            return_val = current_node->get_item();
         } 
     }
     else
@@ -256,23 +256,32 @@ void Sequence::clear()
 // is released. If called with an invalid position throws an exception.
 void Sequence::erase(size_t position)
 {
-    SequenceNode* node_next;
-    SequenceNode* node_prev;
+    SequenceNode* erase_node_next;
+    SequenceNode* erase_node_prev;
     SequenceNode* node_to_erase;
-
+    SequenceNode* iter_node_next;
+    int current_size
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        node_to_erase = (*this)[position];
+        // find node_to_erase
+        node_to_erase = this->head;
+        iter_node_next = this->head->get_next();
+        while (iter_next_node != nullptr)
+        {
+            node_to_erase = iter_next_node;
+            iter_next_node = node_to_erase->get_next();
+        }
+
         // Get previous and next node of the node being erased
-        node_next = node_to_erase->get_next();
-        node_prev = node_to_erase->get_prev();
+        erase_node_next = node_to_erase->get_next();
+        erase_node_prev = node_to_erase->get_prev();
         // Connect the two nodes so that the erase doesn't create a gap
-        node_next->get_prev() = node_prev;
-        node_prev->get_next() = node_next;
+        erase_node_next->get_prev() = erase_node_prev;
+        erase_node_prev->get_next() = erase_node_next;
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
-        int current_size = this->sequence_size;
+        current_size = this->sequence_size;
         this->sequence_size -= 1;
     }
     else
