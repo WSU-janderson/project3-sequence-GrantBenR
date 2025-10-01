@@ -1,5 +1,6 @@
 #include <string>
 #include <ostream>
+#include <iostream>
 #include "SequenceNode.h"
 
 SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
@@ -73,7 +74,6 @@ SequenceNode& SequenceNode::operator=(const std::string& item_value)
 // What happens when you go sequence[i] = int
 SequenceNode& SequenceNode::operator=(const int item_value)
 {
-    cout <<"ping";
     this->set_item(item_value);
     return *this;
 }
@@ -83,4 +83,9 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
     this->set_next(sn.get_next());
     this->set_prev(sn.get_prev());
     return *this;
+}
+std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
+{
+    os << "{item: \"" << s.get_head()->get_item() << "\", next: \"" << s.get_next()->get_item() << "\", prev: \"" << s.get_prev()->get_item() << "\"}"
+    return os;
 }
