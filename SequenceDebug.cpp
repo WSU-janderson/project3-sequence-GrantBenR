@@ -20,6 +20,20 @@ int main()
     std::cout << "Starting tests..." << std::endl; 
     SequenceTest* sequenceTester = new SequenceTest();
     SequenceNodeTest* sequenceNodeTester = new SequenceNodeTest();
+    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode());
+    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode_string());
+    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode_int());
+    IS_TRUE(sequenceNodeTester->TEST_SN_get_item());
+    IS_TRUE(sequenceNodeTester->TEST_SN_set_item_string());
+    IS_TRUE(sequenceNodeTester->TEST_SN_set_item_int());
+    IS_TRUE(sequenceNodeTester->TEST_SN_get_next());
+    IS_TRUE(sequenceNodeTester->TEST_SN_set_next());
+    IS_TRUE(sequenceNodeTester->TEST_SN_get_prev());
+    IS_TRUE(sequenceNodeTester->TEST_SN_set_prev());
+    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_string());
+    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_int());
+    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_SequenceNode());
+    IS_TRUE(sequenceNodeTester->TEST_SN_operator_ostream());
     IS_TRUE(sequenceTester->TEST_S_Sequence_size_t());
     IS_TRUE(sequenceTester->TEST_S_Sequence_deepcopy());
     IS_TRUE(sequenceTester->TEST_S_set_size_size_t());
@@ -45,20 +59,6 @@ int main()
     IS_TRUE(sequenceTester->TEST_S_erase_count());
     IS_TRUE(sequenceTester->TEST_S_last_index());
     IS_TRUE(sequenceTester->TEST_S_operator_ostream());
-    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode());
-    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode_string());
-    IS_TRUE(sequenceNodeTester->TEST_SN_SequenceNode_int());
-    IS_TRUE(sequenceNodeTester->TEST_SN_get_item());
-    IS_TRUE(sequenceNodeTester->TEST_SN_set_item_string());
-    IS_TRUE(sequenceNodeTester->TEST_SN_set_item_int());
-    IS_TRUE(sequenceNodeTester->TEST_SN_get_next());
-    IS_TRUE(sequenceNodeTester->TEST_SN_set_next());
-    IS_TRUE(sequenceNodeTester->TEST_SN_get_prev());
-    IS_TRUE(sequenceNodeTester->TEST_SN_set_prev());
-    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_string());
-    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_int());
-    IS_TRUE(sequenceNodeTester->TEST_SN_operator_equals_SequenceNode());
-    IS_TRUE(sequenceNodeTester->TEST_SN_operator_ostream());
 
     std::cout << "Your project is ready to go!" << std::endl;
 

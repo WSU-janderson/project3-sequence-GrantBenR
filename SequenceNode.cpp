@@ -3,6 +3,8 @@
 #include <iostream>
 #include "SequenceNode.h"
 
+/// default constructor, next and prev are set to nullptr and the node's
+/// element is set to the empty string
 SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
 {
     std::string empty_string = "";

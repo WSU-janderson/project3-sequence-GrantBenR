@@ -10,6 +10,7 @@ class SequenceNodeTest
 {
     private:
     public:
+        SequenceNodeTest();
         bool TEST_SN_SequenceNode();// empty constructor
         bool TEST_SN_SequenceNode_string();// parameterized constructor with string
         bool TEST_SN_SequenceNode_int();// parameterized constructor with int

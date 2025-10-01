@@ -10,6 +10,7 @@ class SequenceTest
     private:
 
     public:
+        SequenceTest();
         bool TEST_S_Sequence_size_t();
         bool TEST_S_Sequence_deepcopy();
         bool TEST_S_set_size_size_t();

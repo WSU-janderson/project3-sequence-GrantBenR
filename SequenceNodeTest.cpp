@@ -4,7 +4,9 @@
 #include "SequenceNodeTest.h"
 #include "Sequence.h"
 #include "SequenceNode.h"
-// empty constructor
+
+SequenceNodeTest::SequenceNodeTest() {}
+// empty constructor for SequenceNode
 bool SequenceNodeTest::TEST_SN_SequenceNode()
 {
     std::cout << "- - SequenceNode::SequenceNode() - - " << std::endl;
