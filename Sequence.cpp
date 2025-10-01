@@ -22,7 +22,7 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     {
         current_node = new SequenceNode();
         next_node = new SequenceNode();
-        next_node->set_prev(current_node)
+        next_node->set_prev(current_node);
         current_node->set_next(next_node);
         
         this->head = current_node;
@@ -32,7 +32,7 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
             current_node->set_prev(next_node);
             
             next_node = new SequenceNode();
-            next_node->set_prev(current_node)
+            next_node->set_prev(current_node);
             current_node->set_next(next_node);
             this->set_tail(next_node);
         }
