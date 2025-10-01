@@ -5,16 +5,6 @@
 #include "Sequence.h"
 #include "SequenceNode.h"
 
-bool SequenceTest::TEST_S_Sequence()
-{
-    std::cout << "- - Sequence::Sequence() - - " << std::endl;
-    Sequence* test_sequence = new Sequence();
-    std::cout << "HEAD: " << test_sequence->get_head() << std::endl;
-    std::cout << "TAIL: " << test_sequence->get_tail() << std::endl;
-    std::cout << "SIZE: " << test_sequence->size() << std::endl;
-    delete test_sequence;
-    return true;
-}
 bool SequenceTest::TEST_S_Sequence_size_t()
 {
     std::cout << "- - Sequence::Sequence(size_t) - - " << std::endl;

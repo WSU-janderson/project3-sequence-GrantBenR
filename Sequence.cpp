@@ -6,11 +6,6 @@
 
 // Creates an empty sequence (numElts == 0) or a sequence of numElts items
 // indexed from 0 ... (numElts - 1).
-Sequence::Sequence() : head(nullptr), tail(nullptr)
-{
-    this->set_size(0);
-    return;
-}
 Sequence::Sequence(size_t sz) : sequence_size(sz), head(nullptr), tail(nullptr)
 {
     SequenceNode* current_node;
