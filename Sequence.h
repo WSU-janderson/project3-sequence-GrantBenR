@@ -20,6 +20,8 @@ class Sequence
         std::string Sequence::back() const;
         bool Sequence::empty() const;
         size_t Sequence::size() const;
+        SequenceNode* Sequence::head() const
+        SequenceNode* Sequence::tail() const
         void Sequence::clear();
         void Sequence::erase(size_t position);
         void Sequence::erase(size_t position, size_t count);

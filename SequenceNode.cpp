@@ -11,3 +11,15 @@ SequenceNode::SequenceNode(std::string item) : next(nullptr), prev(nullptr), ite
 {
 
 }
+std::string SequenceNode::item()
+{
+    return this->item;
+}
+SequenceNode* SequenceNode::next()
+{
+    return this->next;
+}
+SequenceNode* SequenceNode::prev()
+{
+    return this->prev;
+}
