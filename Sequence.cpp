@@ -10,7 +10,7 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
 {
     if (sz < 0) 
     {
-        throw exception();
+        throw std::exception();
     }
     else if (sz == 0)
     {
@@ -43,7 +43,7 @@ Sequence::Sequence(const Sequence& s)
 {
     if (s.sequence_size < 0) 
     {
-        throw exception();
+        throw std::exception();
     }
     else
     {
@@ -103,7 +103,7 @@ Sequence& Sequence::operator=(const Sequence& s)
     }
     else
     {
-        throw exception();
+        throw std::exception();
         return nullptr;
     }
     
@@ -131,7 +131,7 @@ std::string& Sequence::operator[](size_t position)
     }
     else
     {
-        throw exception();
+        throw std::exception();
     }
     return;
 }
@@ -165,7 +165,7 @@ void Sequence::pop_back()
     }
     else
     {
-        throw exception();
+        throw std::exception();
     }
     return;
 }
@@ -182,7 +182,7 @@ void Sequence::insert(size_t position, std::string item)
     }
     else
     {
-        throw exception();
+        throw std::exception();
     }
     return;
 }
@@ -200,7 +200,7 @@ std::string Sequence::front() const
     }
     else
     {
-        throw exception();
+        throw std::exception();
         return "";
     }
     
@@ -210,7 +210,7 @@ std::string Sequence::back() const
 {
     if (this->empty()) 
     {
-        throw exception();
+        throw std::exception();
     }
     return this->tail->item();
 }
@@ -269,7 +269,7 @@ void Sequence::erase(size_t position)
     }
     else
     {
-        throw exception();
+        throw std::exception();
     }
     return;
 }
@@ -295,7 +295,7 @@ void Sequence::erase(size_t position, size_t count)
     }
     else
     {
-        throw exception();
+        throw std::exception();
     }
     return;
 }
