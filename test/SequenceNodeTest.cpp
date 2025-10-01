@@ -5,7 +5,7 @@
 #include "Sequence.h"
 #include "SequenceNode.h"
 // empty constructor
-bool SequenceNodeTest::TEST_SequenceNode()
+bool SequenceNodeTest::TEST_SN_SequenceNode()
 {
     std::cout << "- - SequenceNode::SequenceNode() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode();
@@ -33,7 +33,7 @@ bool SequenceNodeTest::TEST_SequenceNode()
     return true;
 }
 // parameterized constructor with string
-bool SequenceNodeTest::TEST_SequenceNode_string()
+bool SequenceNodeTest::TEST_SN_SequenceNode_string()
 {
     std::cout << "- - SequenceNode::SequenceNode(string) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -61,7 +61,7 @@ bool SequenceNodeTest::TEST_SequenceNode_string()
     return true;
 }
 // parameterized constructor with int
-bool SequenceNodeTest::TEST_SequenceNode_int()
+bool SequenceNodeTest::TEST_SN_SequenceNode_int()
 {
     std::cout << "- - SequenceNode::SequenceNode(int) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode(5);
@@ -89,7 +89,7 @@ bool SequenceNodeTest::TEST_SequenceNode_int()
     return true;
 }
 // getter for item
-bool SequenceNodeTest::TEST_get_item()
+bool SequenceNodeTest::TEST_SN_get_item()
 {
     std::cout << "- - SequenceNode::get_item() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -105,7 +105,7 @@ bool SequenceNodeTest::TEST_get_item()
     return true;
 }
 // getter for item reference
-bool SequenceNodeTest::TEST_get_item_ref()
+bool SequenceNodeTest::TEST_SN_get_item_ref()
 {
     std::cout << "- - SequenceNode::get_item_ref() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -121,7 +121,7 @@ bool SequenceNodeTest::TEST_get_item_ref()
     return true;
 }
 // setter for item with string
-bool SequenceNodeTest::TEST_set_item_string()
+bool SequenceNodeTest::TEST_SN_set_item_string()
 {
     std::cout << "- - SequenceNode::set_item(string) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -138,7 +138,7 @@ bool SequenceNodeTest::TEST_set_item_string()
     return true;
 }
 // setter for item with int
-bool SequenceNodeTest::TEST_set_item_int()
+bool SequenceNodeTest::TEST_SN_set_item_int()
 {
     std::cout << "- - SequenceNode::set_item(int) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode(5);
@@ -155,7 +155,7 @@ bool SequenceNodeTest::TEST_set_item_int()
     return true;
 }
 // getter for next
-bool SequenceNodeTest::TEST_get_next()
+bool SequenceNodeTest::TEST_SN_get_next()
 {
     std::cout << "- - SequenceNode::get_next() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -170,7 +170,7 @@ bool SequenceNodeTest::TEST_get_next()
     return true;
 }
 // setter for next
-bool SequenceNodeTest::TEST_set_next()
+bool SequenceNodeTest::TEST_SN_set_next()
 {
     std::cout << "- - SequenceNode::set_next() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -188,7 +188,7 @@ bool SequenceNodeTest::TEST_set_next()
     return true;
 }
 // getter for prev
-bool SequenceNodeTest::TEST_get_prev()
+bool SequenceNodeTest::TEST_SN_get_prev()
 {
     std::cout << "- - SequenceNode::get_prev() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -203,7 +203,7 @@ bool SequenceNodeTest::TEST_get_prev()
     return true;
 }   
 // setter for prev
-bool SequenceNodeTest::TEST_set_prev()
+bool SequenceNodeTest::TEST_SN_set_prev()
 {
     std::cout << "- - SequenceNode::set_prev() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -221,7 +221,7 @@ bool SequenceNodeTest::TEST_set_prev()
     return true;
 }
 // operator= with string
-bool SequenceNodeTest::TEST_operator_equals_string()
+bool SequenceNodeTest::TEST_SN_operator_equals_string()
 {
     std::cout << "- - SequenceNode::operator=(string) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -238,7 +238,7 @@ bool SequenceNodeTest::TEST_operator_equals_string()
     return true;
 }
 // operator= with int
-bool SequenceNodeTest::TEST_operator_equals_int()
+bool SequenceNodeTest::TEST_SN_operator_equals_int()
 {
     std::cout << "- - SequenceNode::operator=(int) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode(5);
@@ -255,7 +255,7 @@ bool SequenceNodeTest::TEST_operator_equals_int()
     return true;
 }
 // operator= with SequenceNode
-bool SequenceNodeTest::TEST_operator_equals_SequenceNode()
+bool SequenceNodeTest::TEST_SN_operator_equals_SequenceNode()
 {
     std::cout << "- - SequenceNode::operator=(SequenceNode) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
@@ -274,7 +274,7 @@ bool SequenceNodeTest::TEST_operator_equals_SequenceNode()
     return true;
 }
 // operator<< for ostream
-bool SequenceNodeTest::TEST_operator_ostream()
+bool SequenceNodeTest::TEST_SN_operator_ostream()
 {
     std::cout << "- - SequenceNode::operator<<(ostream) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");

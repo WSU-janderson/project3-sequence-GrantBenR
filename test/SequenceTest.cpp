@@ -5,7 +5,7 @@
 #include "Sequence.h"
 #include "SequenceNode.h"
 
-bool SequenceTest::TEST_Sequence()
+bool SequenceTest::TEST_S_Sequence()
 {
     std::cout << "- - Sequence::Sequence() - - " << std::endl;
     Sequence* test_sequence = new Sequence();
@@ -15,7 +15,7 @@ bool SequenceTest::TEST_Sequence()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_Sequence_size_t()
+bool SequenceTest::TEST_S_Sequence_size_t()
 {
     std::cout << "- - Sequence::Sequence(size_t) - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -25,7 +25,7 @@ bool SequenceTest::TEST_Sequence_size_t()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_Sequence_deepcopy()
+bool SequenceTest::TEST_S_Sequence_deepcopy()
 {
     std::cout << "- - Sequence::Sequence(const Sequence& s) - - " << std::endl;
     Sequence* test_sequence_1 = new Sequence(5);
@@ -40,7 +40,7 @@ bool SequenceTest::TEST_Sequence_deepcopy()
     delete test_sequence_2;
     return true;
 }
-bool SequenceTest::TEST_set_size_size_t()
+bool SequenceTest::TEST_S_set_size_size_t()
 {
     std::cout << "- - Sequence::set_size(size_t) - - " << std::endl;
     Sequence* test_sequence = new Sequence();
@@ -50,7 +50,7 @@ bool SequenceTest::TEST_set_size_size_t()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_set_size_int()
+bool SequenceTest::TEST_S_set_size_int()
 {
     std::cout << "- - Sequence::set_size(int) - - " << std::endl;
     Sequence* test_sequence = new Sequence();
@@ -60,7 +60,7 @@ bool SequenceTest::TEST_set_size_int()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_size()
+bool SequenceTest::TEST_S_size()
 {
     std::cout << "- - Sequence::size() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -68,7 +68,7 @@ bool SequenceTest::TEST_size()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_get_head()
+bool SequenceTest::TEST_S_get_head()
 {
     std::cout << "- - Sequence::get_head() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -76,7 +76,7 @@ bool SequenceTest::TEST_get_head()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_set_head()
+bool SequenceTest::TEST_S_set_head()
 {
     std::cout << "- - Sequence::set_head() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -87,7 +87,7 @@ bool SequenceTest::TEST_set_head()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_get_tail()
+bool SequenceTest::TEST_S_get_tail()
 {
     std::cout << "- - Sequence::get_tail() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -95,7 +95,7 @@ bool SequenceTest::TEST_get_tail()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_set_tail()
+bool SequenceTest::TEST_S_set_tail()
 {
     std::cout << "- - Sequence::set_tail() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -106,14 +106,14 @@ bool SequenceTest::TEST_set_tail()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_tilde_Sequence()
+bool SequenceTest::TEST_S_tilde_Sequence()
 {
     std::cout << "- - Sequence::~Sequence() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
     ~test_sequence;
     return true;
 }
-bool SequenceTest::TEST_operator_equals()
+bool SequenceTest::TEST_S_operator_equals()
 {
     std::cout << "- - Sequence::operator=(const Sequence& s) - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -128,7 +128,7 @@ bool SequenceTest::TEST_operator_equals()
     delete test_sequence_copy;
     return true;
 }
-bool SequenceTest::TEST_operator_brackets()
+bool SequenceTest::TEST_S_operator_brackets()
 {
     std::cout << "- - Sequence::operator[](size_t position) - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -141,7 +141,7 @@ bool SequenceTest::TEST_operator_brackets()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_push_back_string()
+bool SequenceTest::TEST_S_push_back_string()
 {
     std::cout << "- - Sequence::push_back(std::string value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -152,7 +152,7 @@ bool SequenceTest::TEST_push_back_string()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_push_back_int()
+bool SequenceTest::TEST_S_push_back_int()
 {
     std::cout << "- - Sequence::push_back(int value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -163,7 +163,7 @@ bool SequenceTest::TEST_push_back_int()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_pop_back()
+bool SequenceTest::TEST_S_pop_back()
 {
     std::cout << "- - Sequence::pop_back() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
@@ -173,7 +173,7 @@ bool SequenceTest::TEST_pop_back()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_insert_string()
+bool SequenceTest::TEST_S_insert_string()
 {
     std::cout << "- - Sequence::insert(size_t position, const std::string& value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -186,7 +186,7 @@ bool SequenceTest::TEST_insert_string()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_insert_int()
+bool SequenceTest::TEST_S_insert_int()
 {
     std::cout << "- - Sequence::insert(size_t position, int value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -199,7 +199,7 @@ bool SequenceTest::TEST_insert_int()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_front()
+bool SequenceTest::TEST_S_front()
 {
     std::cout << "- - Sequence::front() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -210,7 +210,7 @@ bool SequenceTest::TEST_front()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_back()
+bool SequenceTest::TEST_S_back()
 {
     std::cout << "- - Sequence::back() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -222,7 +222,7 @@ bool SequenceTest::TEST_back()
     return true;
 
 }
-bool SequenceTest::TEST_empty()
+bool SequenceTest::TEST_S_empty()
 {
     std::cout << "- - Sequence::empty() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -232,7 +232,7 @@ bool SequenceTest::TEST_empty()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_clear()
+bool SequenceTest::TEST_S_clear()
 {
     std::cout << "- - Sequence::clear() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -245,7 +245,7 @@ bool SequenceTest::TEST_clear()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_erase()
+bool SequenceTest::TEST_S_erase()
 {
     std::cout << "- - Sequence::erase(size_t position) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -258,7 +258,7 @@ bool SequenceTest::TEST_erase()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_erase_count()
+bool SequenceTest::TEST_S_erase_count()
 {
     std::cout << "- - Sequence::erase(size_t position) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -271,7 +271,7 @@ bool SequenceTest::TEST_erase_count()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_last_index()
+bool SequenceTest::TEST_S_last_index()
 {
     std::cout << "- - Sequence::last_index() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
@@ -282,7 +282,7 @@ bool SequenceTest::TEST_last_index()
     delete test_sequence;
     return true;
 }
-bool SequenceTest::TEST_operator_ostream()
+bool SequenceTest::TEST_S_operator_ostream()
 {
     std::cout << "- - Sequence::operator<<(std::ostream& os, const Sequence& seq) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
