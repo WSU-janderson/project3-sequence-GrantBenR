@@ -22,7 +22,7 @@ class SequenceNode
         SequenceNode* get_prev() const;
         void set_prev(SequenceNode* prev_value);
         SequenceNode& operator=(const std::string& item_value);
-        SequenceNode& operator=(const int& item_value);
+        SequenceNode& operator=(const int item_value);
         SequenceNode& operator=(const SequenceNode& sn);
 
 
