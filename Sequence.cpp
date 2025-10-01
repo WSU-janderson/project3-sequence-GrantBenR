@@ -59,30 +59,24 @@ size_t Sequence::size() const
 {
     return this->size;
 }
-// Setter for size
-void Sequence::size(size_t size_value)
-{
-    this->size = size_value;
-    return;
-}
 // Getter for head
-SequenceNode* Sequence::head() const
+SequenceNode* Sequence::get_head() const
 {
     return this->head;
 }
 // Setter for head
-void Sequence::head(SequenceNode* head_value)
+void Sequence::set_head(SequenceNode* head_value)
 {
     this->head = head_value;
     return;
 }
 // Getter for tail
-SequenceNode* Sequence::tail() const
+SequenceNode* Sequence::get_tail() const
 {
     return this->tail;
 }
 // Setter for tail
-void Sequence::tail(SequenceNode* tail_value)
+void Sequence::set_tail(SequenceNode* tail_value)
 {
     this->tail = turn_value;
     return;

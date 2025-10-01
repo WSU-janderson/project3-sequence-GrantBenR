@@ -12,34 +12,34 @@ SequenceNode::SequenceNode()
 SequenceNode::SequenceNode(std::string item, SequenceNode* next, SequenceNode* prev) : item(item), next(next), prev(prev){}
 
 // SequenceNode.item getter
-std::string SequenceNode::item()
+std::string SequenceNode::get_item()
 {
     return this->item;
 }
 // SequenceNode.item setter
-void SequenceNode::item(std::string item_value)
+void SequenceNode::set_item(std::string item_value)
 {
     this->item = item_value;
     return
 }
 // SequenceNode.next getter
-SequenceNode* SequenceNode::next()
+SequenceNode* SequenceNode::get_next()
 {
     return this->next;
 }
 // SequenceNode.next setter
-void SequenceNode::next(SequenceNode* next_value)
+void SequenceNode::set_next(SequenceNode* next_value)
 {
     this->item = item_value;
     return
 }
 // SequenceNode.next getter
-SequenceNode* SequenceNode::prev()
+SequenceNode* SequenceNode::get_prev()
 {
     return this->prev;
 }
 // SequenceNode.prev setter
-void SequenceNode::prev(SequenceNode* prev_value)
+void SequenceNode::set_prev(SequenceNode* prev_value)
 {
     this->item = item_value;
     return
