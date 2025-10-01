@@ -22,15 +22,15 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     {
         current_node = new SequenceNode(nullptr,nullptr,"");
         next_node = new SequenceNode(nullptr,current_node,"");
-        current_node->get_next() = &next_node;
+        current_node->get_next() = next_node;
         
-        this->head = &current_node;
+        this->head = current_node;
         for (i = 0; i < (sz - 1); i++)
         {
             current_node = new SequenceNode(nullptr,next_node,"");
             next_node = new SequenceNode(nullptr,current_node,"");
-            current_node->get_next() = &next_node;
-            this->tail = &next_node;
+            current_node->get_next() = next_node;
+            this->tail = next_node;
         }
         return;
     }
@@ -123,7 +123,7 @@ std::string& Sequence::operator[](size_t position)
         next_node = this->head->get_next();
         while (next_node != nullptr)
         {
-            current_node = &next_node;
+            current_node = next_node;
             next_node = current_node->get_next();
             index += 1;
         } 
@@ -139,8 +139,8 @@ void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node;
     new_node = new SequenceNode(nullptr, this->tail, item);
-    this->tail->get_next() = &new_node;
-    this->tail = &new_node;
+    this->tail->get_next() = new_node;
+    this->tail = new_node;
     return;
 }
 // The value of int item is append to the sequence.
@@ -164,7 +164,7 @@ void Sequence::pop_back()
 
         new_tail = this->tail->get_prev();
         delete(this->tail);
-        this->tail = &new_tail;
+        this->tail = new_tail;
     }
     else
     {
@@ -243,9 +243,9 @@ void Sequence::clear()
     delete(curr_tail);
     while (prev_node != nullptr)
     {
-        curr_tail = &prev_node;
+        curr_tail = prev_node;
         prev_node = curr_tail->get_prev();
-        delete(curr_tail)
+        delete(curr_tail);
     }
     this->head = nullptr;
     this->tail = nullptr;
@@ -267,8 +267,8 @@ void Sequence::erase(size_t position)
         node_next = node_to_erase->get_next();
         node_prev = node_to_erase->get_prev();
         // Connect the two nodes so that the erase doesn't create a gap
-        node_next->get_prev()() = &node_prev;
-        node_prev->get_next()() = &node_next;
+        node_next->get_prev() = node_prev;
+        node_prev->get_next() = node_next;
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
@@ -343,7 +343,7 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     // Case for rest of nodes
     while (next_node != nullptr)
     {
-        current_node = &next_node;
+        current_node = next_node;
         next_node = current_node->get_next();
         if (current_node->get_item().empty())
         {
