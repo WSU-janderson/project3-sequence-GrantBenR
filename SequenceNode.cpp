@@ -26,6 +26,10 @@ std::string SequenceNode::get_item() const
 {
     return this->item;
 }
+std::string& SequenceNode::get_item_ref() 
+{ 
+    return this->item;
+}
 // SequenceNode.item setter
 void SequenceNode::set_item(std::string item_value)
 {

@@ -14,6 +14,7 @@ class SequenceNode
         SequenceNode(std::string item_value);
         SequenceNode(int item_value);
         std::string get_item() const;
+        std::string& get_item_ref();
         void set_item(std::string item_value);
         void set_item(int item_value);
         SequenceNode* get_next() const;

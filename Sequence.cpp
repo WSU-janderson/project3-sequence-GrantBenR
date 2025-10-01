@@ -134,7 +134,7 @@ std::string& Sequence::operator[](size_t position)
 {
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        SequenceNode* current_node = this->head;
+        SequenceNode* current_node = this->get_head();
         for (size_t i = 0; i < position; ++i) 
         {
             if (current_node == nullptr) {
@@ -144,7 +144,7 @@ std::string& Sequence::operator[](size_t position)
         }
 
         // Assuming get_item() returns std::string&
-        return current_node->get_item();
+        return current_node->get_item_ref();
     }
     else
     {
