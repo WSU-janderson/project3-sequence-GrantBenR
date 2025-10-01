@@ -10,25 +10,24 @@ class Sequence
     public:
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
-        size_t Sequence::size() const;
-        void Sequence::size(size_t size_value)
-        SequenceNode* Sequence::head() const
-        void Sequence::head(SequenceNode* head_value)
-        SequenceNode* Sequence::tail() const
-        void Sequence::tail(SequenceNode* tail_value)
+        size_t size() const;
+        void size(size_t size_value)
+        SequenceNode* head() const
+        void head(SequenceNode* head_value)
+        SequenceNode* tail() const
+        void tail(SequenceNode* tail_value)
         ~Sequence();
         Sequence& operator=(const Sequence& s);
-        std::string& Sequence::operator[](size_t position);
-        void Sequence::push_back(std::string item);
-        void Sequence::pop_back();
-        void Sequence::insert(size_t position, std::string item);
-        std::string Sequence::front() const;
-        std::string Sequence::back() const;
-        bool Sequence::empty() const;
-        
-        void Sequence::clear();
-        void Sequence::erase(size_t position);
-        void Sequence::erase(size_t position, size_t count);
-        int Sequence::last_index();
+        std::string& operator[](size_t position);
+        void push_back(std::string item);
+        void pop_back();
+        void insert(size_t position, std::string item);
+        std::string front() const;
+        std::string back() const;
+        bool empty() const;
+        void clear();
+        void erase(size_t position);
+        void erase(size_t position, size_t count);
+        int last_index();
         friend ostream& operator<<(ostream& os, const Sequence& s);
 };
