@@ -15,23 +15,23 @@ bool SequenceNodeTest::TEST_SN_SequenceNode()
     if (test_node->get_item() != "") 
     {
         std::cout << "Error: Item is not initialized to: \"\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // parameterized constructor with string
@@ -43,23 +43,23 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_string()
     if (test_node->get_item() != "test") 
     {
         std::cout << "Error: Item is not initialized to: \"test\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // parameterized constructor with int
@@ -71,23 +71,23 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_int()
     if (test_node->get_item() != "5")
     {
         std::cout << "Error: Item is not initialized to: \"5\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // getter for item
@@ -99,11 +99,11 @@ bool SequenceNodeTest::TEST_SN_get_item()
     if (test_node->get_item() != "test") 
     {
         std::cout << "Error: get_item() did not return: \"test\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // getter for item reference
@@ -115,11 +115,11 @@ bool SequenceNodeTest::TEST_SN_get_item_ref()
     if (test_node->get_item_ref() != "test") 
     {
         std::cout << "Error: get_item_ref() did not return: \"test\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // setter for item with string
@@ -132,11 +132,11 @@ bool SequenceNodeTest::TEST_SN_set_item_string()
     if (test_node->get_item() != "new_test") 
     {
         std::cout << "Error: Item is not set to: \"new_test\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // setter for item with int
@@ -149,11 +149,11 @@ bool SequenceNodeTest::TEST_SN_set_item_int()
     if (test_node->get_item() != "10") 
     {
         std::cout << "Error: Item is not set to: \"10\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // getter for next
@@ -164,11 +164,11 @@ bool SequenceNodeTest::TEST_SN_get_next()
     std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: get_next() did not return: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // setter for next
@@ -181,12 +181,12 @@ bool SequenceNodeTest::TEST_SN_set_next()
     std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != next_node) {
         std::cout << "Error: Next is not set to the correct node." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
     delete next_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // getter for prev
@@ -197,11 +197,11 @@ bool SequenceNodeTest::TEST_SN_get_prev()
     std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: get_prev() did not return: nullptr." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }   
 // setter for prev
@@ -214,12 +214,12 @@ bool SequenceNodeTest::TEST_SN_set_prev()
     std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != prev_node) {
         std::cout << "Error: Prev is not set to the correct node." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
     delete prev_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // operator= with string
@@ -232,11 +232,11 @@ bool SequenceNodeTest::TEST_SN_operator_equals_string()
     if (test_node->get_item() != "new_test") 
     {
         std::cout << "Error: Item is not set to: \"new_test\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // operator= with int
@@ -249,11 +249,11 @@ bool SequenceNodeTest::TEST_SN_operator_equals_int()
     if (test_node->get_item() != "10") 
     {
         std::cout << "Error: Item is not set to: \"10\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // operator= with SequenceNode
@@ -267,12 +267,12 @@ bool SequenceNodeTest::TEST_SN_operator_equals_SequenceNode()
     if (test_node->get_item() != "other") 
     {
         std::cout << "Error: Item is not set to: \"other\"." << std::endl;
-        std::cout << "Test failed!" << std::endl;
+        std::cout << "- - - - FAIL - - - -" << std::endl;
         return false;
     }
     delete test_node;
     delete other_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
 // operator<< for ostream
@@ -280,8 +280,8 @@ bool SequenceNodeTest::TEST_SN_operator_ostream()
 {
     std::cout << "- - SequenceNode::operator<<(ostream) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
-    std::cout << "Item: " << *test_node << std::endl;
+    std::cout << "Node: " << *test_node << std::endl;
     delete test_node;
-    std::cout << "Test passed!" << std::endl;
+    std::cout << "- - - - PASS - - - -" << std::endl;
     return true;
 }
