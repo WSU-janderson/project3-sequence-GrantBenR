@@ -10,9 +10,9 @@ class SequenceNode
         SequenceNode(); // empty constructor
         SequenceNode(std::string item, SequenceNode* next_value, SequenceNode* prev_value) : item(item), next(next), prev(prev); //constructor with item
         std::string item() const;
-        void item(std::string item_value)
+        void item(std::string item_value);
         SequenceNode* next() const;
-        void next(SequenceNode* next_value)
+        void next(SequenceNode* next_value);
         SequenceNode* prev() const;
-        void prev(SequenceNode* prev_value)
+        void prev(SequenceNode* prev_value);
 };

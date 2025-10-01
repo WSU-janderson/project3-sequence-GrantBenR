@@ -11,11 +11,11 @@ class Sequence
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
         size_t size() const;
-        void size(size_t size_value)
-        SequenceNode* head() const
-        void head(SequenceNode* head_value)
-        SequenceNode* tail() const
-        void tail(SequenceNode* tail_value)
+        void size(size_t size_value);
+        SequenceNode* head() const;
+        void head(SequenceNode* head_value);
+        SequenceNode* tail() const;
+        void tail(SequenceNode* tail_value);
         ~Sequence();
         Sequence& operator=(const Sequence& s);
         std::string& operator[](size_t position);
