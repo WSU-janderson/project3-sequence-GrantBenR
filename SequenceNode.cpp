@@ -117,11 +117,11 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
 }
 bool SequenceNode::operator==(const SequenceNode& sn) const 
 {
-    return (this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev())
+    return (this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev());
 }
 bool SequenceNode::operator!=(const SequenceNode& sn) const 
 {
-    return !((this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev()))
+    return !((this->get_item() == sn.get_item()) && (this->get_next() == sn.get_next()) && (this->get_prev() == sn.get_prev()));
 }
 std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
 {
