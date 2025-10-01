@@ -132,9 +132,8 @@ Sequence& Sequence::operator=(const Sequence& s)
 // of the sequence
 std::string& Sequence::operator[](size_t position)
 {
-    std::string& return_value;
     static const std::string& empty_string = "";
-    return_value = empty_string;
+    std::string& return_value = empty_string;
     if ((position >= 0) && (position <= this->last_index())) 
     {
         SequenceNode* current_node;
