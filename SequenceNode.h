@@ -10,8 +10,9 @@ class SequenceNode
         SequenceNode* prev; // ptr to prev node
         std::string item; // string contents of node
     public:
-        SequenceNode(); // empty constructor
-        SequenceNode(std::string item, SequenceNode* next_value, SequenceNode* prev_value) : item(item), next(next), prev(prev); //constructor for string item
+        SequenceNode::SequenceNode() : next(nullptr), prev(nullptr) // empty constructor
+        SequenceNode::SequenceNode(std::string item_value) : next(nullptr), prev(nullptr)
+        SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
         std::string get_item() const;
         void set_item(std::string item_value);
         void set_item(int item_value);

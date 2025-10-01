@@ -1,20 +1,22 @@
 #include <string>
 #include <ostream>
 #include "SequenceNode.h"
-SequenceNode::SequenceNode()
+SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
 {
-    this->item("");
-    this->next(nullptr);
-    this->prev(nullptr);
+    this->set_item("");
+    return;
 }
 /// parameterized constructor, next and prev are set to nullptr and the
 /// node's element is set to the given value
-SequenceNode::SequenceNode(std::string item, SequenceNode* next, SequenceNode* prev) : 
-item(item), 
-next(next), 
-prev(prev)
+SequenceNode::SequenceNode(std::string item_value) : next(nullptr), prev(nullptr)
 {
-
+    this->set_item(item_value);
+    return;
+}
+SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
+{
+    this->set_item(item_value);
+    return;
 }
 
 // SequenceNode.item getter
