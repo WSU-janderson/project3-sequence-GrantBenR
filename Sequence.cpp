@@ -93,7 +93,14 @@ SequenceNode* Sequence::get_head() const
 // Setter for head
 void Sequence::set_head(SequenceNode* head_value)
 {
-    this->head = head_value;
+    if (this->head != nullptr)
+    {
+        this->head = new SequenceNode(head_value->get_item(), this->get_head()->get_next(), nullptr);
+    }
+    else
+    {
+        this->head = new SequenceNode(head_value->get_item(), nullptr, nullptr);
+    }
     return;
 }
 // Getter for tail
@@ -104,7 +111,14 @@ SequenceNode* Sequence::get_tail() const
 // Setter for tail
 void Sequence::set_tail(SequenceNode* tail_value)
 {
-    this->tail = tail_value;
+    if (this->tail != nullptr)
+    {
+        this->tail = new SequenceNode(tail_value->get_item(), nullptr, this->get_tail()->get_prev());
+    }
+    else
+    {
+        this->tail = new SequenceNode(tail_value->get_item(), nullptr, nullptr);
+    }
     return;
 }
 
