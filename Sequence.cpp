@@ -295,7 +295,7 @@ int Sequence::last_index()
 // Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
 // stream. This is *not* a method of the Sequence class, but instead it is a
 // friend function
-friend ostream& operator<<(std::ostream& os, const Sequence& s)
+friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
 {
     SequenceNode* current_node;
     SequenceNode* next_node;

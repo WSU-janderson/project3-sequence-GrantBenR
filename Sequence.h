@@ -31,6 +31,6 @@ class Sequence
         void erase(size_t position);
         void erase(size_t position, size_t count);
         int last_index();
-        friend ostream& operator<<(ostream& os, const Sequence& s);
+        friend std::ostream& operator<<(std::ostream& os, const Sequence& s);
 };
 #endif
