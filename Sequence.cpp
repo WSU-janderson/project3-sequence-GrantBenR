@@ -8,6 +8,8 @@
 // indexed from 0 ... (numElts - 1).
 Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullptr)
 {
+    SequenceNode* current_node;
+    SequenceNode* next_node;
     if (sz < 0) 
     {
         throw std::exception();
@@ -18,9 +20,6 @@ Sequence::Sequence(size_t sz = 0) : sequence_size(sz), head(nullptr), tail(nullp
     }
     else
     {
-        SequenceNode* current_node;
-        SequenceNode* next_node;
-
         current_node = new SequenceNode(nullptr,nullptr,"");
         next_node = new SequenceNode(nullptr,current_node,"");
         current_node->next() = &next_node;
@@ -121,11 +120,11 @@ std::string& Sequence::operator[](size_t position)
         int index = 0;
 
         current_node = this->head;
-        NextNode = this->head->next();
-        while (NextNode != nullptr)
+        next_node = this->head->next();
+        while (next_node != nullptr)
         {
-            current_node = &NextNode;
-            NextNode = current_node->next();
+            current_node = &next_node;
+            next_node = current_node->next();
             index += 1;
         } 
     }
@@ -138,7 +137,8 @@ std::string& Sequence::operator[](size_t position)
 // The value of string item is append to the sequence.
 void Sequence::push_back(std::string item)
 {
-    SequenceNode* new_node = new SequenceNode(nullptr, this->tail, item);
+    SequenceNode* new_node;
+    new_node = new SequenceNode(nullptr, this->tail, item);
     this->tail->next() = &new_node;
     this->tail = &new_node;
     return;
@@ -153,13 +153,16 @@ void Sequence::push_back(int item)
 // reduced by one. If sequence was empty, throws an exception
 void Sequence::pop_back()
 {
+    int current_size;
+    SequenceNode* new_tail;
+
     if (!(this->empty())) 
     {
         
-        int current_size = this->sequence_size;
+        current_size = this->sequence_size;
         this->sequence_size = (current_size - 1);
 
-        SequenceNode* new_tail = this->tail->prev();
+        new_tail = this->tail->prev();
         delete(this->tail);
         this->tail = &new_tail;
     }
@@ -175,9 +178,10 @@ void Sequence::pop_back()
 // sequence
 void Sequence::insert(size_t position, std::string item)
 {
+    int current_size;
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        int current_size = this->sequence_size;
+        current_size = this->sequence_size;
         this->sequence_size = (current_size + 1);
     }
     else
@@ -252,12 +256,16 @@ void Sequence::clear()
 // is released. If called with an invalid position throws an exception.
 void Sequence::erase(size_t position)
 {
+    SequenceNode* node_next;
+    SequenceNode* node_prev;
+    SequenceNode* node_to_erase;
+
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        SequenceNode* node_to_erase = this[position];
+        node_to_erase = this[position];
         // Get previous and next node of the node being erased
-        SequenceNode* node_next = node_to_erase->next();
-        SequenceNode* node_prev = node_to_erase->prev();
+        node_next = node_to_erase->next();
+        node_prev = node_to_erase->prev();
         // Connect the two nodes so that the erase doesn't create a gap
         node_next->prev()() = &node_prev;
         node_prev->next()() = &node_next;
@@ -279,14 +287,15 @@ void Sequence::erase(size_t position)
 void Sequence::erase(size_t position, size_t count)
 {
     int end_index = (position + count - 1);
-    SequenceNode* current_node_to_erase;
+    SequenceNode* current_node;
+    SequenceNode* next_node;
 
     if ((position <= (this->sequence_size - count - 1)) && (count > 0))
     {
         for (index = 0; index < this->sequence_size; index++)
         {
             current_node = this->head;
-            NextNode = this->head->next();
+            next_node = this->head->next();
             if ((index >= position) && (index < end_index))
             {
                 delete(current_node);
@@ -317,7 +326,7 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     
     // Initial head cell case
     current_node = s.head;
-    NextNode = s.head->get_next();
+    next_node = s.head->get_next();
     if (current_node->get_item().isEmpty())
     {
         os << "null";
@@ -326,16 +335,16 @@ friend std::ostream& operator<<(std::ostream& os, const Sequence& s)
     {
         os << current_node->get_item();
     }
-    if (NexNode != nullptr)
+    if (next_node != nullptr)
     {
         os << ",";
     }
 
     // Case for rest of nodes
-    while (NextNode != nullptr)
+    while (next_node != nullptr)
     {
-        current_node = &NextNode;
-        NextNode = current_node->get_next();
+        current_node = &next_node;
+        next_node = current_node->get_next();
         if (current_node->item().isEmpty())
         {
             os << "null";

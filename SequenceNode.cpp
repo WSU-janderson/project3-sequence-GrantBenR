@@ -68,3 +68,10 @@ SequenceNode& SequenceNode::operator=(const int item_value)
     this->set_item(item_value);
     return *this;
 }
+SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
+{
+    this->set_item(sn.get_item());
+    this->set_next(sn.get_next());
+    this->set_prev(sn.get_prev());
+    return *this;
+}

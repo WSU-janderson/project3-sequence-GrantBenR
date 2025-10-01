@@ -21,6 +21,8 @@ class SequenceNode
         void set_prev(SequenceNode* prev_value);
         SequenceNode& operator=(const std::string item_value);
         SequenceNode& operator=(const int item_value);
+        SequenceNode& operator=(const SequenceNode& sn);
+
 
 };
 
