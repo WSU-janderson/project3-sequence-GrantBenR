@@ -1,3 +1,6 @@
+#ifndef SEQUENCE_NODE_H
+#define SEQUENCE_NODE_H
+
 #include <string>
 #include <ostream>
 class SequenceNode 
@@ -16,3 +19,5 @@ class SequenceNode
         SequenceNode* get_prev() const;
         void set_prev(SequenceNode* prev_value);
 };
+
+#endif

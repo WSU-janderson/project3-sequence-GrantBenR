@@ -1,3 +1,6 @@
+#ifndef SEQUENCE_H
+#define SEQUENCE_H
+
 #include <string>
 #include <ostream>
 #include "SequenceNode.h"
@@ -30,3 +33,4 @@ class Sequence
         int last_index();
         friend ostream& operator<<(ostream& os, const Sequence& s);
 };
+#endif
