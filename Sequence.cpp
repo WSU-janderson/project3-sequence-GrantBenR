@@ -14,7 +14,6 @@ Sequence::Sequence(size_t sz = 0) : size(sz), head(nullptr), tail(nullptr)
     }
     else if (sz == 0)
     {
-
         return;
     }
     else
@@ -46,9 +45,12 @@ Sequence::Sequence(const Sequence& s)
     {
         throw exception();
     }
-    this->size = s.size;
-    this->head = s.head;
-    this->tail = s.tail;
+    else
+    {
+        this->size = s.size;
+        this->head = s.head;
+        this->tail = s.tail; 
+    }
     return;
 }
 // Destroys all items in the sequence and release the memory
@@ -251,7 +253,22 @@ void Sequence::erase(size_t position)
 // count throws an exception.
 void Sequence::erase(size_t position, size_t count)
 {
-    if (position > (this->size - count - 1)) 
+    int end_index = (position + count - 1);
+    SequenceNode* current_node_to_erase;
+
+    if ((position <= (this->size - count - 1)) && (count > 0))
+    {
+        for (index = 0; index < this->size; index++)
+        {
+            current_node = this->head;
+            NextNode = this->head->next();
+            if ((index >= position) && (index < end_index))
+            {
+                delete(current_node);
+            }
+        }
+    }
+    else
     {
         throw exception();
     }
