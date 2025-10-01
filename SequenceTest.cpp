@@ -1,5 +1,5 @@
 #include <iostream>
-#include <osstream>
+#include <ostream>
 #include <string>
 #include "SequenceTest.h"
 #include "Sequence.h"

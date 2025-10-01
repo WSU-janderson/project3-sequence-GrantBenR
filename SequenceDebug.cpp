@@ -7,7 +7,7 @@
  * SequenceDebug from the drop-down menu next to the Build (hammer icon) if it is on SequenceTestHarness
  */
 #include <iostream>
-#include <osstream>
+#include <ostream>
 #include "SequenceTest.h"
 #include "SequenceNodeTest.h"
 #include "Sequence.h"
