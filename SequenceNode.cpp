@@ -31,7 +31,7 @@ void SequenceNode::set_item(std::string item_value)
 // SequenceNode.item setter for int
 void SequenceNode::set_item(int item_value)
 {
-    this->item = static_cast<std::string>(item_value);
+    this->item = std::to_string(item_value);
     return;
 }
 // SequenceNode.next getter

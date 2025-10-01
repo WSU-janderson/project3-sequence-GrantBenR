@@ -146,7 +146,7 @@ void Sequence::push_back(std::string item)
 // The value of int item is append to the sequence.
 void Sequence::push_back(int item)
 {
-    this->push_back(static_cast<std::string>(item))
+    this->push_back(std::to_string(item))
     return;
 }
 // The item at the end of the sequence is deleted and size of the sequence is
@@ -192,7 +192,7 @@ void Sequence::insert(size_t position, std::string item)
 }
 void Sequence::insert(size_t position, int item)
 {
-    this->insert(static_cast<std::string>(item))
+    this->insert(std::to_string(item))
     return;
 }
 // Returns the first element in the sequence. If the sequence is empty, throw an exception.
