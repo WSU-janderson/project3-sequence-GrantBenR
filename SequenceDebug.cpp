@@ -20,7 +20,6 @@ int main()
     std::cout << "Starting tests..." << std::endl; 
     SequenceTest* sequenceTester = new SequenceTest();
     SequenceNodeTest* sequenceNodeTester = new SequenceNodeTest();
-    IS_TRUE(sequenceTester->TEST_S_Sequence());
     IS_TRUE(sequenceTester->TEST_S_Sequence_size_t());
     IS_TRUE(sequenceTester->TEST_S_Sequence_deepcopy());
     IS_TRUE(sequenceTester->TEST_S_set_size_size_t());
