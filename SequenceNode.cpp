@@ -86,6 +86,25 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
 }
 std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
 {
-    os << "{item: \"" << s.get_item() << "\", next: \"" << s.get_next()->get_item() << "\", prev: \"" << s.get_prev()->get_item() << "\"}";
-    return os;`
+    os << "{item: \"" << s.get_item();
+    os << "\", next: \"";
+    if (s.get_next() == nullptr) 
+    {
+        os << "nullptr";
+    }
+    else
+    {
+        os << s.get_next()->get_item();
+    }
+    os << "\", prev: \""
+    if (s.get_prev() == nullptr) 
+    {
+        os << "nullptr";
+    }
+    else
+    {
+        os << s.get_prev()->get_item();
+    }
+    os << "\"}";
+    return os;
 }
