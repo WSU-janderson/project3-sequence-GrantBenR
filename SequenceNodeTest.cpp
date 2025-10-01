@@ -9,21 +9,21 @@ bool SequenceNodeTest::TEST_SN_SequenceNode()
 {
     std::cout << "- - SequenceNode::SequenceNode() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode();
-    std::cout << "Item: " << test_node->item << std::endl;
-    if (test_node->item != "") 
+    std::cout << "Item: " << test_node->get_item() << std::endl;
+    if (test_node->get_item() != "") 
     {
         std::cout << "Error: Item is not initialized to: \"\"." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->next << std::endl;
-    if (test_node->next != nullptr) {
+    std::cout << "Next: " << test_node->get_next() << std::endl;
+    if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->prev << std::endl;
-    if (test_node->prev != nullptr) {
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
@@ -37,21 +37,21 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_string()
 {
     std::cout << "- - SequenceNode::SequenceNode(string) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
-    std::cout << "Item: " << test_node->item << std::endl;
-    if (test_node->item != "test") 
+    std::cout << "Item: " << test_node->get_item() << std::endl;
+    if (test_node->get_item() != "test") 
     {
         std::cout << "Error: Item is not initialized to: \"test\"." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->next << std::endl;
-    if (test_node->next != nullptr) {
+    std::cout << "Next: " << test_node->get_next() << std::endl;
+    if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->prev << std::endl;
-    if (test_node->prev != nullptr) {
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
@@ -65,21 +65,21 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_int()
 {
     std::cout << "- - SequenceNode::SequenceNode(int) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode(5);
-    std::cout << "Item: " << test_node->item << std::endl;
-    if (test_node->item != "5")
+    std::cout << "Item: " << test_node->get_item() << std::endl;
+    if (test_node->get_item() != "5")
     {
         std::cout << "Error: Item is not initialized to: \"5\"." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->next << std::endl;
-    if (test_node->next != nullptr) {
+    std::cout << "Next: " << test_node->get_next() << std::endl;
+    if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->prev << std::endl;
-    if (test_node->prev != nullptr) {
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "Test failed!" << std::endl;
         return false;

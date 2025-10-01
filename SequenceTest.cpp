@@ -9,9 +9,9 @@ bool SequenceTest::TEST_S_Sequence()
 {
     std::cout << "- - Sequence::Sequence() - - " << std::endl;
     Sequence* test_sequence = new Sequence();
-    std::cout << "HEAD: " << test_sequence->head << std::endl;
-    std::cout << "TAIL: " << test_sequence->tail << std::endl;
-    std::cout << "SIZE: " << test_sequence->sequence_size << std::endl;
+    std::cout << "HEAD: " << test_sequence->get_head() << std::endl;
+    std::cout << "TAIL: " << test_sequence->get_tail() << std::endl;
+    std::cout << "SIZE: " << test_sequence->size() << std::endl;
     delete test_sequence;
     return true;
 }
@@ -19,9 +19,9 @@ bool SequenceTest::TEST_S_Sequence_size_t()
 {
     std::cout << "- - Sequence::Sequence(size_t) - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
-    std::cout << "HEAD: " << test_sequence->head << std::endl;
-    std::cout << "TAIL: " << test_sequence->tail << std::endl;
-    std::cout << "SIZE: " << test_sequence->sequence_size << std::endl;
+    std::cout << "HEAD: " << test_sequence->get_head() << std::endl;
+    std::cout << "TAIL: " << test_sequence->get_tail() << std::endl;
+    std::cout << "SIZE: " << test_sequence->size() << std::endl;
     delete test_sequence;
     return true;
 }
@@ -30,12 +30,12 @@ bool SequenceTest::TEST_S_Sequence_deepcopy()
     std::cout << "- - Sequence::Sequence(const Sequence& s) - - " << std::endl;
     Sequence* test_sequence_1 = new Sequence(5);
     Sequence* test_sequence_2 = new Sequence(*test_sequence_1);
-    std::cout << "Original head: " << test_sequence_1->head << std::endl;
-    std::cout << "Original tail: " << test_sequence_1->tail << std::endl;
-    std::cout << "Original size: " << test_sequence_1->sequence_size << std::endl;
-    std::cout << "Copy head: " << test_sequence_2->head << std::endl;
-    std::cout << "Copy tail: " << test_sequence_2->tail << std::endl;
-    std::cout << "Copy size: " << test_sequence_2->sequence_size << std::endl;
+    std::cout << "Original head: " << test_sequence_1->get_head() << std::endl;
+    std::cout << "Original tail: " << test_sequence_1->get_tail() << std::endl;
+    std::cout << "Original size: " << test_sequence_1->size() << std::endl;
+    std::cout << "Copy head: " << test_sequence_2->get_head() << std::endl;
+    std::cout << "Copy tail: " << test_sequence_2->get_tail() << std::endl;
+    std::cout << "Copy size: " << test_sequence_2->size() << std::endl;
     delete test_sequence_1;
     delete test_sequence_2;
     return true;
@@ -44,9 +44,9 @@ bool SequenceTest::TEST_S_set_size_size_t()
 {
     std::cout << "- - Sequence::set_size(size_t) - - " << std::endl;
     Sequence* test_sequence = new Sequence();
-    std::cout << "In size: " << test_sequence->sequence_size << std::endl;
+    std::cout << "In size: " << test_sequence->size() << std::endl;
     test_sequence->set_size(static_cast<size_t>(5));
-    std::cout << "Out size: " << test_sequence->sequence_size << std::endl;
+    std::cout << "Out size: " << test_sequence->size() << std::endl;
     delete test_sequence;
     return true;
 }
@@ -54,9 +54,9 @@ bool SequenceTest::TEST_S_set_size_int()
 {
     std::cout << "- - Sequence::set_size(int) - - " << std::endl;
     Sequence* test_sequence = new Sequence();
-    std::cout << "In size: " << test_sequence->sequence_size << std::endl;
+    std::cout << "In size: " << test_sequence->size() << std::endl;
     test_sequence->set_size(static_cast<int>(5));
-    std::cout << "Out size: " << test_sequence->sequence_size << std::endl;
+    std::cout << "Out size: " << test_sequence->size() << std::endl;
     delete test_sequence;
     return true;
 }
@@ -146,7 +146,7 @@ bool SequenceTest::TEST_S_push_back_string()
     std::cout << "- - Sequence::push_back(std::string value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
     for (int i = 0; i < 5; i++) {
-        test_sequence->push_back(std::to_string((i + 1) * 100));
+        test_sequence->push_back(std::to_string(i));
     }
     std::cout << "Sequence after push_back: " << *test_sequence << std::endl;
     delete test_sequence;
@@ -157,7 +157,7 @@ bool SequenceTest::TEST_S_push_back_int()
     std::cout << "- - Sequence::push_back(int value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
     for (int i = 0; i < 5; i++) {
-        test_sequence->push_back(i * 100);
+        test_sequence->push_back(i);
     }
     std::cout << "Sequence after push_back: " << *test_sequence << std::endl;
     delete test_sequence;
@@ -204,7 +204,7 @@ bool SequenceTest::TEST_S_front()
     std::cout << "- - Sequence::front() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
     for (int i = 0; i < 5; i++) {
-        test_sequence->push_back(i * 100);
+        test_sequence->push_back(i);
     }
     std::cout << "Front element: " << test_sequence->front() << std::endl;
     delete test_sequence;
@@ -227,7 +227,7 @@ bool SequenceTest::TEST_S_empty()
     std::cout << "- - Sequence::empty() - - " << std::endl;
     Sequence* test_sequence = new Sequence(0);
     std::cout << "Is sequence empty? " << (test_sequence->empty() ? "Yes" : "No") << std::endl;
-    test_sequence->push_back(100);
+    test_sequence->push_back(1);
     std::cout << "Is sequence empty after push_back? " << (test_sequence->empty() ? "Yes" : "No") << std::endl;
     delete test_sequence;
     return true;
