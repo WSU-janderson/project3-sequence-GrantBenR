@@ -54,14 +54,16 @@ SequenceNode* SequenceNode::get_next() const
 void SequenceNode::set_next(SequenceNode* next_value)
 {
     // make sure the new next value, has a prev value of the current node
-    next_value->get_prev() = *this;
-    // If next already exists, copy its next values to our new one
     if (this->get_next() != nullptr)
-    {   
-        // do the same for the new next values's next value (this is confusing as crap)
-        next_value->get_next() = (this->get_next()->get_next());
+    {
+        // if old next has properties copy them
+        this->next = new SequenceNode(next_value->get_item(), this->get_next()->get_next(), this*);
     }
-    this->next = next_value;
+    else
+    {
+        // if old next does not have properties, use nullptr
+        this->next = new SequenceNode(next_value->get_item(), nullptr, this*);
+    }
     return;
 }
 // SequenceNode.next getter
@@ -72,15 +74,16 @@ SequenceNode* SequenceNode::get_prev() const
 // SequenceNode.prev setter
 void SequenceNode::set_prev(SequenceNode* prev_value)
 {
-    // make sure the new prev value, has a next value of the current node
-    prev_value->get_next() = *this;
-    // If prev already exists, copy its prev values to our new one
     if (this->get_prev() != nullptr)
-    {   
-        // do the same for the new next values's next value
-        prev_value->get_prev() = (this->get_prev()->get_prev());
+    {
+        // if old prev has values, copy them
+        this->prev = new SequenceNode(prev_value->get_item(), this*, this->get_prev()->get_prev());
     }
-    this->prev = prev_value;
+    else
+    {
+        // if old prev does not have values, use nullptr
+        this->prev = new SequenceNode(prev_value->get_item(), this*, nullptr);
+    }
     return;
 }
 // What happens when you go sequence[i] = string
