@@ -10,32 +10,24 @@ Sequence::Sequence(size_t sz) : sequence_size(sz), head(nullptr), tail(nullptr)
 {
     SequenceNode* current_node;
     SequenceNode* next_node;
-    if (sz < 0) 
+    if (this->size() < 0)
     {
         throw std::exception();
     }
-    else if (sz == 0)
+    else if (this->size() == 0)
     {
         return;
     }
     else
     {
-        current_node = new SequenceNode();
-        next_node = new SequenceNode();
-        next_node->set_prev(current_node);
-        current_node->set_next(next_node);
-        
-        this->head = current_node;
-        for (int i = 0; i < (sz - 1); i++)
+        this->set_head(new SequenceNode());
+        current_node = this->get_head();
+        for (int i = 1; i < this->size(); i++)
         {
-            current_node = new SequenceNode();
-            current_node->set_prev(next_node);
-            
-            next_node = new SequenceNode();
-            next_node->set_prev(current_node);
-            current_node->set_next(next_node);
-            this->set_tail(next_node);
+            current_node->set_next(new SequenceNode());
+            current_node = current_node->get_next();
         }
+        this->set_tail(current_node);
         return;
     }
     
@@ -44,11 +36,11 @@ Sequence::Sequence(size_t sz) : sequence_size(sz), head(nullptr), tail(nullptr)
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
-    if (s.sequence_size >= 0) 
+    if (s.size() >= 0)
     {
-        this->set_size(s.sequence_size);
-        this->set_head(s.head);
-        this->set_tail(s.tail);
+        this->set_size(s.size());
+        this->set_head(s.get_head());
+        this->set_tail(s.get_tail());
     }
     else
     {
