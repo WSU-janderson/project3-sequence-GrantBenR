@@ -362,13 +362,13 @@ int Sequence::last_index()
 {
     return (this->sequence_size - 1);
 }
-bool Sequence::operator==(const Sequence& s) const 
+bool Sequence::operator==(const Sequence* s) const 
 {
     if (s != nullptr)
     {
-        bool are_head_equal = (this->get_head() == s.get_head());
-        bool are_tail_equal = (this->get_tail() == s.get_tail());
-        bool are_size_equal = (this->size() == s.size());
+        bool are_head_equal = (this->get_head() == s->get_head());
+        bool are_tail_equal = (this->get_tail() == s->get_tail());
+        bool are_size_equal = (this->size() == s->size());
         return (are_head_equal && are_tail_equal && are_size_equal);
     }
     else
@@ -376,13 +376,13 @@ bool Sequence::operator==(const Sequence& s) const
         return false;  
     } 
 }
-bool Sequence::operator!=(const Sequence& s) const 
+bool Sequence::operator!=(const Sequence* s) const 
 {
     if (s != nullptr)
     {
-        bool are_head_equal = (this->get_head() == s.get_head());
-        bool are_tail_equal = (this->get_tail() == s.get_tail());
-        bool are_size_equal = (this->size() == s.size());
+        bool are_head_equal = (this->get_head() == s->get_head());
+        bool are_tail_equal = (this->get_tail() == s->get_tail());
+        bool are_size_equal = (this->size() == s->size());
         return !(are_head_equal && are_tail_equal && are_size_equal);
     }
     else
