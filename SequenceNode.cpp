@@ -115,13 +115,13 @@ SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
     this->set_prev(sn.get_prev());
     return *this;
 }
-bool SequenceNode::operator==(const SequenceNode& sn) const 
+bool SequenceNode::operator==(const SequenceNode* sn) const 
 {
     if (sn != nullptr)
     {
-        bool are_items_equal = (this->get_item() == sn.get_item());
-        bool are_next_equal = (this->get_next() == sn.get_next());
-        bool are_prev_equal = (this->get_prev() == sn.get_prev());
+        bool are_items_equal = (this->get_item() == sn->get_item());
+        bool are_next_equal = (this->get_next() == sn->get_next());
+        bool are_prev_equal = (this->get_prev() == sn->get_prev());
         return (are_items_equal && are_next_equal && are_prev_equal);
     }
     else
@@ -130,13 +130,13 @@ bool SequenceNode::operator==(const SequenceNode& sn) const
     }
     
 }
-bool SequenceNode::operator!=(const SequenceNode& sn) const 
+bool SequenceNode::operator!=(const SequenceNode* sn) const 
 {
     if (sn != nullptr)
     {
-        bool are_items_equal = (this->get_item() == sn.get_item());
-        bool are_next_equal = (this->get_next() == sn.get_next());
-        bool are_prev_equal = (this->get_prev() == sn.get_prev());
+        bool are_items_equal = (this->get_item() == sn->get_item());
+        bool are_next_equal = (this->get_next() == sn->get_next());
+        bool are_prev_equal = (this->get_prev() == sn->get_prev());
         return !(are_items_equal && are_next_equal && are_prev_equal);
     }
     else
