@@ -18,13 +18,13 @@ bool SequenceNodeTest::TEST_SN_SequenceNode()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->get_next() << std::endl;
+    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
@@ -47,13 +47,13 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_string()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->get_next() << std::endl;
+    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
@@ -76,13 +76,13 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_int()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << test_node->get_next() << std::endl;
+    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;

@@ -58,7 +58,7 @@ bool SequenceTest::TEST_S_get_head()
 {
     std::cout << "- - Sequence::get_head() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
-    std::cout << "Head: " << test_sequence->get_head() << std::endl;
+    std::cout << "Head: " << *(test_sequence->get_head()) << std::endl;
     return true;
 }
 bool SequenceTest::TEST_S_set_head()
@@ -67,14 +67,14 @@ bool SequenceTest::TEST_S_set_head()
     Sequence* test_sequence = new Sequence(5);
     SequenceNode* new_head = new SequenceNode("New Head");
     test_sequence->set_head(new_head);
-    std::cout << "Head: " << test_sequence->get_head() << std::endl;
+    std::cout << "Head: " << *(test_sequence->get_head()) << std::endl;
     return true;
 }
 bool SequenceTest::TEST_S_get_tail()
 {
     std::cout << "- - Sequence::get_tail() - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
-    std::cout << "Tail: " << test_sequence->get_tail() << std::endl;
+    std::cout << "Tail: " << *(test_sequence->get_tail()) << std::endl;
     return true;
 }
 bool SequenceTest::TEST_S_set_tail()
@@ -83,7 +83,7 @@ bool SequenceTest::TEST_S_set_tail()
     Sequence* test_sequence = new Sequence(5);
     SequenceNode* new_tail = new SequenceNode("New Tail");
     test_sequence->set_tail(new_tail);
-    std::cout << "Tail: " << test_sequence->get_tail() << std::endl;
+    std::cout << "Tail: " << *(test_sequence->get_tail()) << std::endl;
     return true;
 }
 bool SequenceTest::TEST_S_tilde_Sequence()
@@ -97,11 +97,11 @@ bool SequenceTest::TEST_S_operator_equals()
     std::cout << "- - Sequence::operator=(const Sequence& s) - - " << std::endl;
     Sequence* test_sequence = new Sequence(5);
     Sequence* test_sequence_copy = new Sequence(*test_sequence);
-    std::cout << "Original head: " << test_sequence->get_head() << std::endl;
-    std::cout << "Original tail: " << test_sequence->get_tail() << std::endl;
+    std::cout << "Original head: " << *(test_sequence->get_head()) << std::endl;
+    std::cout << "Original tail: " << *(test_sequence->get_tail()) << std::endl;
     std::cout << "Original size: " << test_sequence->size() << std::endl;
-    std::cout << "Copy head: " << test_sequence_copy->get_head() << std::endl;
-    std::cout << "Copy tail: " << test_sequence_copy->get_tail() << std::endl;
+    std::cout << "Copy head: " << *(test_sequence_copy->get_head()) << std::endl;
+    std::cout << "Copy tail: " << *(test_sequence_copy->get_tail()) << std::endl;
     std::cout << "Copy size: " << test_sequence_copy->size() << std::endl;
     return true;
 }

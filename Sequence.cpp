@@ -8,45 +8,34 @@
 // indexed from 0 ... (numElts - 1).
 Sequence::Sequence(size_t sz) : sequence_size(sz), head(nullptr), tail(nullptr)
 {
-    SequenceNode* current_node;
     SequenceNode* next_node;
     if (this->size() < 0)
     {
         throw std::exception();
     }
-    else if (this->size() == 0)
-    {
-        return;
-    }
     else
     {
         this->set_head(new SequenceNode());
-        current_node = this->get_head();
+        SequenceNode* current_node = this->get_head();
         for (int i = 1; i < this->size(); i++)
         {
             current_node->set_next(new SequenceNode());
             current_node = current_node->get_next();
         }
         this->set_tail(current_node);
-        return;
     }
-    
-    
 }
 // Creates a (deep) copy of sequence s
 Sequence::Sequence(const Sequence& s)
 {
     if (s.size() >= 0)
     {
-        this->set_size(s.size());
-        this->set_head(s.get_head());
-        this->set_tail(s.get_tail());
+        *this = s;
     }
     else
     {
         throw std::exception();
     }
-    return;
 }
 void Sequence::set_size(size_t size_value)
 {
@@ -58,7 +47,6 @@ void Sequence::set_size(size_t size_value)
     {
         throw std::exception();
     }
-    return;
 }
 void Sequence::set_size(int size_value)
 {
@@ -70,7 +58,6 @@ void Sequence::set_size(int size_value)
     {
         throw std::invalid_argument("Cannot convert negative int to size_t");
     }
-    return;
 }
 // Getter for size
 size_t Sequence::size() const
@@ -93,7 +80,6 @@ void Sequence::set_head(SequenceNode* head_value)
     {
         this->head = new SequenceNode(head_value->get_item(), nullptr, nullptr);
     }
-    return;
 }
 // Getter for tail
 SequenceNode* Sequence::get_tail() const
@@ -111,7 +97,28 @@ void Sequence::set_tail(SequenceNode* tail_value)
     {
         this->tail = new SequenceNode(tail_value->get_item(), nullptr, nullptr);
     }
-    return;
+}
+
+SequenceNode* Sequence::get_at(const size_t position) const
+{
+    if ((position >= 0) && (position <= this->last_index()))
+    {
+        SequenceNode* current_node = this->get_head();
+        for (size_t i = 0; i < position; ++i)
+        {
+            if (current_node == nullptr) {
+                throw std::out_of_range("Index out of range");
+            }
+            current_node = current_node->get_next();
+        }
+
+        // Assuming get_item() returns std::string&
+        return current_node;
+    }
+    else
+    {
+        throw std::exception();
+    }
 }
 
 // Destroys all items in the sequence and release the memory
@@ -120,7 +127,6 @@ Sequence::~Sequence()
 {
     this->clear();
     delete(this);
-    return;
 }
 // The current sequence is released and replaced by a (deep) copy of sequence
 // s. A reference to the copied sequence is returned (return *this;).
@@ -136,7 +142,6 @@ Sequence& Sequence::operator=(const Sequence& s)
     else
     {
         throw std::exception();
-        return *this;
     }
     
 }
@@ -151,10 +156,14 @@ std::string& Sequence::operator[](size_t position)
         SequenceNode* current_node = this->get_head();
         for (size_t i = 0; i < position; ++i) 
         {
-            if (current_node == nullptr) {
+            if (current_node == nullptr)
+            {
                 throw std::out_of_range("Index out of range");
             }
-            current_node = current_node->get_next();
+            else
+            {
+                current_node = current_node->get_next();
+            }
         }
 
         // Assuming get_item() returns std::string&
@@ -168,41 +177,48 @@ std::string& Sequence::operator[](size_t position)
 // The value of string item is append to the sequence.
 void Sequence::push_back(std::string item)
 {
-    SequenceNode* new_node;
-    new_node = new SequenceNode(item);
-    new_node->set_prev(this->get_tail());
-    this->tail->set_next(new_node);
-    this->set_tail(new_node);
-    return;
+    SequenceNode* new_node = new SequenceNode(item, nullptr, this->get_tail());
+    this->set_size(this->size() + 1);
+    // There is no head or tail so we need to set them
+    if (this->head == nullptr)
+    {
+        this->head = new_node;
+        this->set_tail(new_node);
+
+    }
+    if (this->tail == nullptr)
+    {
+        this->set_tail(new_node);
+    }
+    else
+    {
+        // if tail already existed we have to update it
+        this->tail->set_next(new_node);
+        new_node->set_prev(this->tail);
+        this->set_tail(new_node);
+    }
 }
 // The value of int item is append to the sequence.
 void Sequence::push_back(int item)
 {
     this->push_back(std::to_string(item));
-    return;
 }
 // The item at the end of the sequence is deleted and size of the sequence is
 // reduced by one. If sequence was empty, throws an exception
 void Sequence::pop_back()
 {
-    int current_size;
-    SequenceNode* new_tail;
-
     if (!(this->empty())) 
     {
-        
-        current_size = this->sequence_size;
-        this->sequence_size = (current_size - 1);
-
-        new_tail = this->tail->get_prev();
-        delete(this->tail);
-        this->set_tail(new_tail);
+        if (this->tail->get_prev() != nullptr)
+        {
+            this->set_tail(this->tail->get_prev());
+            this->set_size(static_cast<int>(this->size()) - 1);
+        }
     }
     else
     {
         throw std::exception();
     }
-    return;
 }
 // The position satisfies ( position >= 0 && position <= last_index() ). The
 // value of item is inserted at position and the size of sequence is increased
@@ -210,22 +226,18 @@ void Sequence::pop_back()
 // sequence
 void Sequence::insert(size_t position, std::string item)
 {
-    int current_size;
     if ((position >= 0) && (position <= this->last_index())) 
     {
-        current_size = this->sequence_size;
-        this->sequence_size = (current_size + 1);
+        this->sequence_size = (this->size() + 1);
     }
     else
     {
         throw std::exception();
     }
-    return;
 }
 void Sequence::insert(size_t position, int item)
 {
     this->insert(position, std::to_string(item));
-    return;
 }
 // Returns the first element in the sequence. If the sequence is empty, throw an exception.
 std::string Sequence::front() const
@@ -237,7 +249,6 @@ std::string Sequence::front() const
     else
     {
         throw std::exception();
-        return "";
     }
     
 }
@@ -253,7 +264,7 @@ std::string Sequence::back() const
 // Return true if the sequence has no elements, otherwise false.
 bool Sequence::empty() const
 {
-    if (this->sequence_size > 0)
+    if (this->size() > 0)
     {
         return false;
     }
@@ -267,11 +278,8 @@ bool Sequence::empty() const
 // items re-inserted.
 void Sequence::clear()
 {
-    SequenceNode* curr_tail;
-    SequenceNode* prev_node;
-
-    curr_tail = this->get_tail();
-    prev_node = curr_tail->get_prev();
+    SequenceNode* curr_tail = this->get_tail();
+    SequenceNode* prev_node = curr_tail->get_prev();
     delete(curr_tail);
     while (prev_node != nullptr)
     {
@@ -282,23 +290,16 @@ void Sequence::clear()
     this->set_head(nullptr);
     this->set_tail(nullptr);
     this->set_size(0);
-    return;
 }
 // The item at position is removed from the sequence, and the memory
 // is released. If called with an invalid position throws an exception.
 void Sequence::erase(size_t position)
 {
-    SequenceNode* erase_node_next;
-    SequenceNode* erase_node_prev;
-    SequenceNode* node_to_erase;
-    SequenceNode* iter_node_next;
-    int current_size;
-    int last_ind = this->last_index();
-    if ((position >= 0) && (position <= last_ind)) 
+    if ((position >= 0) && (position <= this->last_index()))
     {
         // find node_to_erase
-        node_to_erase = this->head;
-        iter_node_next = this->head->get_next();
+        SequenceNode* node_to_erase = this->head;
+        SequenceNode* iter_node_next = this->head->get_next();
         while (iter_node_next != nullptr)
         {
             node_to_erase = iter_node_next;
@@ -306,53 +307,45 @@ void Sequence::erase(size_t position)
         }
 
         // Get previous and next node of the node being erased
-        erase_node_next = node_to_erase->get_next();
-        erase_node_prev = node_to_erase->get_prev();
+        SequenceNode* erase_node_next = node_to_erase->get_next();
+        SequenceNode* erase_node_prev = node_to_erase->get_prev();
         // Connect the two nodes so that the erase doesn't create a gap
         erase_node_next->set_prev(erase_node_prev);
         erase_node_prev->set_next(erase_node_next);
         // Remove old node from memory
         delete(node_to_erase);
         // reduce size
-        current_size = this->size();
+        const size_t current_size = this->size();
         this->set_size(current_size - 1);
     }
     else
     {
         throw std::exception();
     }
-    return;
 }
 // The items in the sequence at ( position ... (position + count - 1) ) are
 // deleted and their memory released. If called with invalid position and/or
 // count throws an exception.
 void Sequence::erase(size_t position, size_t count)
 {
-    int end_index = (position + count - 1);
-    SequenceNode* current_node;
-    SequenceNode* next_node;
+    const int end_index = static_cast<int>(position + count - 1);
 
     if ((position <= (this->sequence_size - count - 1)) && (count > 0))
     {
-        for (int index = 0; index < this->sequence_size; index++)
+        for (int index = end_index; index >= position; index -= 1)
         {
-            current_node = this->get_head();
-            next_node = this->head->get_next();
-            if ((index >= position) && (index < end_index))
-            {
-                delete(current_node);
-            }
+            const SequenceNode* node_at_index = this->get_at(index);
+            delete(node_at_index);
         }
     }
     else
     {
         throw std::exception();
     }
-    return;
 }
-int Sequence::last_index()
+int Sequence::last_index() const
 {
-    return (this->sequence_size - 1);
+    return static_cast<int>(this->size() - 1);
 }
 bool Sequence::operator==(const Sequence* s) const 
 {
@@ -372,9 +365,9 @@ bool Sequence::operator!=(const Sequence* s) const
 {
     if (s != nullptr)
     {
-        bool are_head_equal = (this->get_head() == s->get_head());
-        bool are_tail_equal = (this->get_tail() == s->get_tail());
-        bool are_size_equal = (this->size() == s->size());
+        const bool are_head_equal = (this->get_head() == s->get_head());
+        const bool are_tail_equal = (this->get_tail() == s->get_tail());
+        const bool are_size_equal = (this->size() == s->size());
         return !(are_head_equal && are_tail_equal && are_size_equal);
     }
     else
@@ -387,16 +380,13 @@ bool Sequence::operator!=(const Sequence* s) const
 // friend function
 std::ostream& operator<<(std::ostream& os, const Sequence& s)
 {
-    SequenceNode* current_node;
-    SequenceNode* next_node;
-    
     // format: <item, item, item>
     // If item is null print "null"
     os << "<";
     
     // Initial head cell case
-    current_node = s.get_head();
-    next_node = s.head->get_next();
+    SequenceNode* current_node = s.get_head();
+    SequenceNode* next_node = s.head->get_next();
     if (current_node->get_item().empty())
     {
         os << "null";

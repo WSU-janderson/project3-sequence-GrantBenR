@@ -7,14 +7,16 @@ class SequenceNode
 {
     private:
     public:
-        SequenceNode* next; // ptr to next node
-        SequenceNode* prev; // ptr to prev node
+        SequenceNode* next{}; // ptr to next node
+        SequenceNode* prev{}; // ptr to prev node
         std::string item; // string contents of node
         SequenceNode();// empty constructor
         SequenceNode(std::string item_value);
         SequenceNode(int item_value);
         SequenceNode(std::string item_value, SequenceNode* next_value, SequenceNode* prev_value);
         SequenceNode(int item_value, SequenceNode* next_value, SequenceNode* prev_value);
+        SequenceNode(const SequenceNode& s);
+        ~SequenceNode();
         std::string get_item() const;
         std::string& get_item_ref();
         void set_item(std::string item_value);
@@ -24,7 +26,7 @@ class SequenceNode
         SequenceNode* get_prev() const;
         void set_prev(SequenceNode* prev_value);
         SequenceNode& operator=(const std::string& item_value);
-        SequenceNode& operator=(const int item_value);
+        SequenceNode& operator=(int item_value);
         SequenceNode& operator=(const SequenceNode& sn);
         bool operator==(const SequenceNode* sn) const;
         bool operator!=(const SequenceNode* sn) const;

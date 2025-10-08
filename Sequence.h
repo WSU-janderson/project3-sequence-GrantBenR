@@ -10,6 +10,8 @@ class Sequence
         SequenceNode* head; // ptr to first node
         SequenceNode* tail; // ptr to last node
         size_t sequence_size; // number of items in the sequence
+        SequenceNode* get_at(size_t position) const;
+
     public:
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
@@ -34,7 +36,7 @@ class Sequence
         void clear();
         void erase(size_t position);
         void erase(size_t position, size_t count);
-        int last_index();
+        int last_index() const;
         bool operator==(const Sequence* s) const;
         bool operator!=(const Sequence* s) const;
         friend std::ostream& operator<<(std::ostream& os, const Sequence& s);
