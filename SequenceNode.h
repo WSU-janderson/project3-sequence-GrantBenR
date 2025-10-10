@@ -30,7 +30,7 @@ class SequenceNode
         SequenceNode& operator=(const SequenceNode& sn);
         bool operator==(const SequenceNode* sn) const;
         bool operator!=(const SequenceNode* sn) const;
-        friend std::ostream& operator<<(std::ostream& os, const SequenceNode& s);
+        friend std::ostream& operator<<(std::ostream& os, const SequenceNode* sn);
 };
 
 #endif

@@ -18,19 +18,19 @@ bool SequenceNodeTest::TEST_SN_SequenceNode()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
+    std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
-    if (test_node->get_prev() != nullptr) {
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
+    if (test_node->get_prev() != nullptr)
+    {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -47,19 +47,18 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_string()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
+    std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -76,19 +75,18 @@ bool SequenceNodeTest::TEST_SN_SequenceNode_int()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
+    std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != nullptr) {
         std::cout << "Error: Next is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != nullptr) {
         std::cout << "Error: Prev is not initialized to: nullptr." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -105,7 +103,6 @@ bool SequenceNodeTest::TEST_SN_get_item()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -122,7 +119,6 @@ bool SequenceNodeTest::TEST_SN_get_item_ref()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -140,7 +136,6 @@ bool SequenceNodeTest::TEST_SN_set_item_string()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -158,7 +153,6 @@ bool SequenceNodeTest::TEST_SN_set_item_int()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -169,13 +163,12 @@ bool SequenceNodeTest::TEST_SN_get_next()
     std::cout << "- - SequenceNode::get_next() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
     test_node->next = new SequenceNode("next", nullptr, test_node);
-    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
+    std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next()->get_item() != "next") {
         std::cout << "Error: get_next().get_item() did not return: next." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -188,14 +181,12 @@ bool SequenceNodeTest::TEST_SN_set_next()
     SequenceNode* next_node = new SequenceNode("next");
     test_node->next = next_node;
     next_node->prev = test_node;
-    std::cout << "Next: " << *(test_node->get_next()) << std::endl;
+    std::cout << "Next: " << test_node->get_next() << std::endl;
     if (test_node->get_next() != next_node) {
         std::cout << "Error: Next is not set to the correct node." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
-    delete next_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -206,13 +197,12 @@ bool SequenceNodeTest::TEST_SN_get_prev()
     std::cout << "- - SequenceNode::get_prev() - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
     test_node->prev = new SequenceNode("prev", test_node, nullptr);
-    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev()->get_item() != "prev") {
         std::cout << "Error: get_prev() did not return: prev." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -224,14 +214,12 @@ bool SequenceNodeTest::TEST_SN_set_prev()
     SequenceNode* test_node = new SequenceNode("test");
     SequenceNode* prev_node = new SequenceNode("prev");
     test_node->set_prev(prev_node);
-    std::cout << "Prev: " << *(test_node->get_prev()) << std::endl;
+    std::cout << "Prev: " << test_node->get_prev() << std::endl;
     if (test_node->get_prev() != prev_node) {
         std::cout << "Error: Prev is not set to the correct node." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
-    delete prev_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -249,7 +237,6 @@ bool SequenceNodeTest::TEST_SN_operator_equals_string()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -267,7 +254,6 @@ bool SequenceNodeTest::TEST_SN_operator_equals_int()
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -280,13 +266,12 @@ bool SequenceNodeTest::TEST_SN_operator_equals_SequenceNode()
     SequenceNode* other_node = new SequenceNode("other");
     test_node = other_node;
     std::cout << "Item: " << test_node->get_item() << std::endl;
-    if (test_node->get_item() != "other") 
+    if (test_node->get_item() != "other")
     {
         std::cout << "Error: Item is not set to: \"other\"." << std::endl;
         std::cout << "- - - - FAIL - - - -" << std::endl << std::endl;
         return false;
     }
-    delete test_node;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;
@@ -296,8 +281,7 @@ bool SequenceNodeTest::TEST_SN_operator_ostream()
 {
     std::cout << "- - SequenceNode::operator<<(ostream) - - " << std::endl;
     SequenceNode* test_node = new SequenceNode("test");
-    std::cout << "Node: " << *test_node << std::endl;
-    delete test_node;
+    std::cout << "Node: " << test_node << std::endl;
     std::cout << "- - - - PASS - - - -" << std::endl;
     std::cout << std::endl;
     return true;

@@ -7,14 +7,15 @@
 class Sequence 
 {
     private:
-        SequenceNode* head; // ptr to first node
-        SequenceNode* tail; // ptr to last node
-        size_t sequence_size; // number of items in the sequence
+        SequenceNode* head{}; // ptr to first node
+        SequenceNode* tail{}; // ptr to last node
+        size_t sequence_size{}; // number of items in the sequence
         SequenceNode* get_at(size_t position) const;
 
     public:
         Sequence(size_t sz = 0);
         Sequence(const Sequence& s);
+        Sequence(const int* int_arr, int int_arr_size);
         void set_size(size_t size_value);
         void set_size(int size_value);
         size_t size() const;

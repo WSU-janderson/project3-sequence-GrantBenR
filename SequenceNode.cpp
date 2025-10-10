@@ -1,5 +1,6 @@
 #include <string>
 #include <ostream>
+#include <utility>
 #include "SequenceNode.h"
 
 /// default constructor, next and prev are set to nullptr and the node's
@@ -12,7 +13,7 @@ SequenceNode::SequenceNode() : next(nullptr), prev(nullptr)
 /// node's element is set to the given value
 SequenceNode::SequenceNode(std::string item_value) : next(nullptr), prev(nullptr)
 {
-    this->set_item(item_value);
+    this->set_item(std::move(item_value));
 }
 SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
 {
@@ -20,7 +21,7 @@ SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
 }
 SequenceNode::SequenceNode(std::string item_value, SequenceNode* next_value, SequenceNode* prev_value) : next(next_value), prev(prev_value)
 {
-    this->set_item(item_value);
+    this->set_item(std::move(item_value));
 }
 SequenceNode::SequenceNode(int item_value, SequenceNode* next_value, SequenceNode* prev_value) : next(next_value), prev(prev_value)
 {
@@ -48,7 +49,7 @@ std::string& SequenceNode::get_item_ref()
 // SequenceNode.item setter
 void SequenceNode::set_item(std::string item_value)
 {
-    this->item = item_value;
+    this->item = std::move(item_value);
 }
 // SequenceNode.item setter for int
 void SequenceNode::set_item(int item_value)
@@ -117,9 +118,9 @@ bool SequenceNode::operator==(const SequenceNode* sn) const
 {
     if (sn != nullptr)
     {
-        bool are_items_equal = (this->get_item() == sn->get_item());
-        bool are_next_equal = (this->get_next() == sn->get_next());
-        bool are_prev_equal = (this->get_prev() == sn->get_prev());
+        const bool are_items_equal = (this->get_item() == sn->get_item());
+        const bool are_next_equal = (this->get_next() == sn->get_next());
+        const bool are_prev_equal = (this->get_prev() == sn->get_prev());
         return (are_items_equal && are_next_equal && are_prev_equal);
     }
     else
@@ -142,27 +143,35 @@ bool SequenceNode::operator!=(const SequenceNode* sn) const
         return true;
     }
 }
-std::ostream& operator<<(std::ostream& os, const SequenceNode& s)
+std::ostream& operator<<(std::ostream& os, const SequenceNode* sn)
 {
-    os << "{item: \"" << s.get_item();
-    os << "\", next: \"";
-    if (s.get_next() == nullptr) 
+    if (sn != nullptr)
     {
-        os << "nullptr";
+        os << "{item: \"" << sn->get_item();
+        os << "\", next: \"";
+        if (sn->get_next() == nullptr)
+        {
+            os << "nullptr";
+        }
+        else
+        {
+            os << sn->get_next()->get_item();
+        }
+        os << "\", prev: \"";
+        if (sn->get_prev() == nullptr)
+        {
+            os << "nullptr";
+        }
+        else
+        {
+            os << sn->get_prev()->get_item();
+        }
+        os << "\"}";
+
     }
     else
     {
-        os << s.get_next()->get_item();
-    }
-    os << "\", prev: \"";
-    if (s.get_prev() == nullptr) 
-    {
         os << "nullptr";
     }
-    else
-    {
-        os << s.get_prev()->get_item();
-    }
-    os << "\"}";
     return os;
 }

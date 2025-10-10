@@ -4,29 +4,43 @@
 #include <ostream>
 #include <exception>
 
-// Creates an empty sequence (numElts == 0) or a sequence of numElts items
-// indexed from 0 ... (numElts - 1).
-Sequence::Sequence(size_t sz) : sequence_size(sz), head(nullptr), tail(nullptr)
+SequenceNode* Sequence::get_at(const size_t position) const
 {
-    SequenceNode* next_node;
-    if (this->size() < 0)
+    if ((position >= 0) && (position <= this->last_index()))
     {
-        throw std::exception();
+        SequenceNode* current_node = this->get_head();
+        for (size_t i = 0; i < position; ++i)
+        {
+            if (current_node == nullptr) {
+                throw std::out_of_range("Index out of range");
+            }
+            current_node = current_node->get_next();
+        }
+
+        // Assuming get_item() returns std::string&
+        return current_node;
     }
     else
     {
-        this->set_head(new SequenceNode());
-        SequenceNode* current_node = this->get_head();
-        for (int i = 1; i < this->size(); i++)
-        {
-            current_node->set_next(new SequenceNode());
-            current_node = current_node->get_next();
-        }
-        this->set_tail(current_node);
+        throw std::exception();
     }
 }
+// Creates an empty sequence (numElts == 0) or a sequence of numElts items
+// indexed from 0 ... (numElts - 1).
+Sequence::Sequence(size_t sz) : head(nullptr), tail(nullptr), sequence_size(sz)
+{
+    SequenceNode* next_node;
+    this->set_head(new SequenceNode());
+    SequenceNode* current_node = this->get_head();
+    for (int i = 1; i < this->size(); i++)
+    {
+        current_node->set_next(new SequenceNode());
+        current_node = current_node->get_next();
+    }
+    this->set_tail(current_node);
+}
 // Creates a (deep) copy of sequence s
-Sequence::Sequence(const Sequence& s)
+Sequence::Sequence(const Sequence& s) : head(nullptr), tail(nullptr), sequence_size(0)
 {
     if (s.size() >= 0)
     {
@@ -36,6 +50,23 @@ Sequence::Sequence(const Sequence& s)
     {
         throw std::exception();
     }
+}
+Sequence::Sequence(const int* int_arr, const int int_arr_size)
+{
+    if (int_arr_size != 0)
+    {
+        this->set_head(new SequenceNode(int_arr[0]));
+        this->set_tail(new SequenceNode(int_arr[0]));
+        for (int i = 1; i < int_arr_size; i++)
+        {
+            this->push_back(int_arr[i]);
+        }
+    }
+    else
+    {
+        throw std::exception();
+    }
+
 }
 void Sequence::set_size(size_t size_value)
 {
@@ -50,7 +81,7 @@ void Sequence::set_size(size_t size_value)
 }
 void Sequence::set_size(int size_value)
 {
-    if (size_value >= 0) 
+    if (size_value >= 0)
     {
         this->sequence_size = static_cast<size_t>(size_value);
     }
@@ -86,6 +117,7 @@ SequenceNode* Sequence::get_tail() const
 {
     return this->tail;
 }
+
 // Setter for tail
 void Sequence::set_tail(SequenceNode* tail_value)
 {
@@ -96,28 +128,6 @@ void Sequence::set_tail(SequenceNode* tail_value)
     else
     {
         this->tail = new SequenceNode(tail_value->get_item(), nullptr, nullptr);
-    }
-}
-
-SequenceNode* Sequence::get_at(const size_t position) const
-{
-    if ((position >= 0) && (position <= this->last_index()))
-    {
-        SequenceNode* current_node = this->get_head();
-        for (size_t i = 0; i < position; ++i)
-        {
-            if (current_node == nullptr) {
-                throw std::out_of_range("Index out of range");
-            }
-            current_node = current_node->get_next();
-        }
-
-        // Assuming get_item() returns std::string&
-        return current_node;
-    }
-    else
-    {
-        throw std::exception();
     }
 }
 
@@ -134,9 +144,9 @@ Sequence& Sequence::operator=(const Sequence& s)
 {
     if (s.sequence_size >= 0) 
     {
-        this->set_size(s.sequence_size);
-        this->set_head(s.head);
-        this->set_tail(s.tail);
+        this->head = s.head;
+        this->tail = s.tail;
+        this->sequence_size = s.sequence_size;
         return *this;
     }
     else
@@ -151,10 +161,10 @@ Sequence& Sequence::operator=(const Sequence& s)
 // of the sequence
 std::string& Sequence::operator[](size_t position)
 {
-    if ((position >= 0) && (position <= this->last_index())) 
+    if ((position >= 0) && (position <= this->last_index()))
     {
         SequenceNode* current_node = this->get_head();
-        for (size_t i = 0; i < position; ++i) 
+        for (size_t i = 0; i < position; ++i)
         {
             if (current_node == nullptr)
             {
@@ -209,11 +219,21 @@ void Sequence::pop_back()
 {
     if (!(this->empty())) 
     {
-        if (this->tail->get_prev() != nullptr)
+        if (this->get_tail() != nullptr)
         {
-            this->set_tail(this->tail->get_prev());
-            this->set_size(static_cast<int>(this->size()) - 1);
+            if (this->get_tail()->get_prev() != nullptr)
+            {
+                this->set_tail(this->get_tail()->get_prev());
+                this->set_size(static_cast<int>(this->size()) - 1);
+            }
+            else
+            {
+                this->tail = nullptr;
+                this->head = nullptr;
+                this->set_size(0);
+            }
         }
+
     }
     else
     {
@@ -351,9 +371,9 @@ bool Sequence::operator==(const Sequence* s) const
 {
     if (s != nullptr)
     {
-        bool are_head_equal = (this->get_head() == s->get_head());
-        bool are_tail_equal = (this->get_tail() == s->get_tail());
-        bool are_size_equal = (this->size() == s->size());
+        const bool are_head_equal = (this->get_head() == s->get_head());
+        const bool are_tail_equal = (this->get_tail() == s->get_tail());
+        const bool are_size_equal = (this->size() == s->size());
         return (are_head_equal && are_tail_equal && are_size_equal);
     }
     else
@@ -380,31 +400,19 @@ bool Sequence::operator!=(const Sequence* s) const
 // friend function
 std::ostream& operator<<(std::ostream& os, const Sequence& s)
 {
+
     // format: <item, item, item>
     // If item is null print "null"
     os << "<";
-    
-    // Initial head cell case
-    SequenceNode* current_node = s.get_head();
-    SequenceNode* next_node = s.head->get_next();
-    if (current_node->get_item().empty())
+    if (s.empty())
     {
-        os << "null";
+        os << "";
     }
     else
     {
-        os << current_node->get_item();
-    }
-    if (next_node != nullptr)
-    {
-        os << ",";
-    }
-
-    // Case for rest of nodes
-    while (next_node != nullptr)
-    {
-        current_node = next_node;
-        next_node = current_node->get_next();
+        // Initial head cell case
+        SequenceNode* current_node = s.get_head();
+        SequenceNode* next_node = s.head->get_next();
         if (current_node->get_item().empty())
         {
             os << "null";
@@ -413,7 +421,26 @@ std::ostream& operator<<(std::ostream& os, const Sequence& s)
         {
             os << current_node->get_item();
         }
-        os << ",";
+        if (next_node != nullptr)
+        {
+            os << ",";
+        }
+
+        // Case for rest of nodes
+        while (next_node != nullptr)
+        {
+            current_node = next_node;
+            next_node = current_node->get_next();
+            if (current_node->get_item().empty())
+            {
+                os << "null";
+            }
+            else
+            {
+                os << current_node->get_item();
+            }
+            os << ",";
+        }
     }
     os << ">";
 
