@@ -15,7 +15,7 @@ SequenceNode::SequenceNode(std::string item_value) : next(nullptr), prev(nullptr
 {
     this->set_item(std::move(item_value));
 }
-SequenceNode::SequenceNode(int item_value) : next(nullptr), prev(nullptr)
+SequenceNode::SequenceNode(const int item_value) : next(nullptr), prev(nullptr)
 {
     this->set_item(item_value);
 }
@@ -64,12 +64,12 @@ SequenceNode* SequenceNode::get_next() const
 // SequenceNode.next setter
 void SequenceNode::set_next(SequenceNode* next_value)
 {
-    if (next_value == nullptr)
-    {
-        next_value = new SequenceNode();
-    }
-    next_value->prev = this;
     this->next = next_value;
+    if (next_value != nullptr)
+    {
+        this->get_next()->prev = this;
+    }
+
 }
 // SequenceNode.next getter
 SequenceNode* SequenceNode::get_prev() const
@@ -79,15 +79,10 @@ SequenceNode* SequenceNode::get_prev() const
 // SequenceNode.prev setter
 void SequenceNode::set_prev(SequenceNode* prev_value)
 {
-    if (this->get_prev() != nullptr)
+    this->prev = prev_value;
+    if (prev_value != nullptr)
     {
-        // if old prev has values, copy them
-        this->prev = new SequenceNode(prev_value->get_item(), this, this->get_prev()->get_prev());
-    }
-    else
-    {
-        // if old prev does not have values, use nullptr
-        this->prev = new SequenceNode(prev_value->get_item(), this, nullptr);
+        this->get_prev()->next = this;
     }
 }
 // What happens when you go sequence[i] = string
@@ -109,9 +104,9 @@ SequenceNode& SequenceNode::operator=(const int item_value)
 }
 SequenceNode& SequenceNode::operator=(const SequenceNode& sn)
 {
-    this->set_item(sn.get_item());
-    this->next = sn.next;
-    this->prev = sn.prev;
+    this->item = sn.get_item();
+    this->next = sn.get_next();
+    this->prev = sn.get_prev();
     return *this;
 }
 bool SequenceNode::operator==(const SequenceNode* sn) const 
@@ -147,7 +142,7 @@ std::ostream& operator<<(std::ostream& os, const SequenceNode* sn)
 {
     if (sn != nullptr)
     {
-        os << "{item: \"" << sn->get_item();
+        os << " {item: \"" << sn->get_item();
         os << "\", next: \"";
         if (sn->get_next() == nullptr)
         {
