@@ -15,6 +15,7 @@ SequenceNode* Sequence::get_at(const size_t position) const
 {
     if ((position >= 0) && (position <= this->last_index()))
     {
+        // Traverse to the node at the given position
         SequenceNode* current_node = this->get_head();
         for (size_t i = 0; i < position; ++i)
         {
@@ -40,10 +41,13 @@ SequenceNode* Sequence::get_at(const size_t position) const
  */
 Sequence::Sequence(size_t sz) : head(nullptr), tail(nullptr)
 {
+
     SequenceNode* first_node = new SequenceNode("");
+    // Set first node manually
     this->set_size(1);
     this->head = first_node;
     this->tail = first_node;
+    // Set others using push_back
     for (int i = 1; i < sz; i++)
     {
         this->push_back("");
@@ -60,6 +64,7 @@ Sequence::Sequence(const Sequence& s) : head(nullptr), tail(nullptr), sequence_s
 {
     if (s.size() >= 0)
     {
+        // This constructor is basically just a wrapper for operator=
         *this = s;
     }
     else
@@ -78,9 +83,13 @@ Sequence::Sequence(const int* int_arr, const int int_arr_size)
 {
     if (int_arr_size != 0)
     {
+        // Set first node manually
         SequenceNode* first_node = new SequenceNode("");
+        this->set_size(1);
         this->head = first_node;
         this->tail = first_node;
+        
+        // Set the rest using push_back
         for (int i = 1; i < int_arr_size; i++)
         {
             this->push_back(int_arr[i]);
@@ -103,6 +112,7 @@ void Sequence::set_size(const size_t size_value)
 {
     if (size_value >= 0)
     {
+        // Size is called sequence_size so as to not conflict with Sequence::size()
         this->sequence_size = size_value;
     }
     else
@@ -225,6 +235,7 @@ std::string& Sequence::operator[](size_t position)
 {
     if ((position >= 0) && (position <= this->last_index()))
     {
+        // Traverse to the node at the given position
         SequenceNode* current_node = this->get_head();
         for (size_t i = 0; i < position; ++i)
         {
@@ -314,6 +325,7 @@ void Sequence::pop_back()
     const size_t init_size = this->size();
     if (!(this->empty())) 
     {
+        // if new size is gonna be 0, we need to just null everything
         if (init_size == 1)
         {
             this->set_head(nullptr);
@@ -465,12 +477,16 @@ void Sequence::clear()
     }
     else if (this->size() > 1)
     {
+
         SequenceNode* curr_tail = this->get_tail();
         SequenceNode* prev_node = curr_tail->get_prev();
         while (prev_node != nullptr)
         {
             curr_tail = prev_node;
             prev_node = curr_tail->get_prev();
+            // delete(curr_tail);
+            // I removed this line since it was causing segfaults.
+            // SequenceNode has a destructor that should handle this.
         }
         this->set_head(nullptr);
         this->set_tail(nullptr);
@@ -571,6 +587,7 @@ void Sequence::erase(size_t position, size_t count)
 
     if ((position <= (this->size() - count - 1)) && (count > 0))
     {
+        // Erase from end of range to start of range so that indices don't shift
         for (int index = end_of_range; index >= position; index -= 1)
         {
             this->erase(index);

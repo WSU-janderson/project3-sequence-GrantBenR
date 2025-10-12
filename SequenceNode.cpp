@@ -144,6 +144,7 @@ void SequenceNode::set_next(SequenceNode* next_value)
     this->next = next_value;
     if (next_value != nullptr)
     {
+        // Update this node's next node to point to this node
         this->get_next()->prev = this;
     }
 }
@@ -167,6 +168,7 @@ void SequenceNode::set_prev(SequenceNode* prev_value)
     this->prev = prev_value;
     if (prev_value != nullptr)
     {
+        // Update this node's previous node to point to this node
         this->get_prev()->next = this;
     }
 }
