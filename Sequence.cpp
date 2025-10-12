@@ -5,6 +5,12 @@
 #include <exception>
 #include <utility>
 
+/**
+ * Gets SequenceNode* at Sequence[position]
+ *
+ * @param position size_t
+ * @return node_at_position SequenceNode*
+ */
 SequenceNode* Sequence::get_at(const size_t position) const
 {
     if ((position >= 0) && (position <= this->last_index()))
@@ -26,8 +32,12 @@ SequenceNode* Sequence::get_at(const size_t position) const
         throw std::runtime_error("get_at - Index out of range");
     }
 }
-// Creates an empty sequence (numElts == 0) or a sequence of numElts items
-// indexed from 0 ... (numElts - 1).
+/**
+ * Creates an empty sequence (numElts == 0) or a sequence of numElts items indexed from 0 ... (numElts - 1).
+ *
+ * @param sz
+ * @return void
+ */
 Sequence::Sequence(size_t sz) : head(nullptr), tail(nullptr)
 {
     SequenceNode* first_node = new SequenceNode("");
@@ -39,7 +49,13 @@ Sequence::Sequence(size_t sz) : head(nullptr), tail(nullptr)
         this->push_back("");
     }
 }
-// Creates a (deep) copy of sequence s
+//
+/**
+ * Creates a (deep) copy of sequence s
+ *
+ * @param s Sequence&
+ * @return void
+ */
 Sequence::Sequence(const Sequence& s) : head(nullptr), tail(nullptr), sequence_size(0)
 {
     if (s.size() >= 0)
@@ -51,6 +67,13 @@ Sequence::Sequence(const Sequence& s) : head(nullptr), tail(nullptr), sequence_s
         throw std::runtime_error("Sequence(Sequence&) - Deepcopy Sequence is empty");
     }
 }
+/**
+ * Creates a sequence from an array of integers int_arr of size int_arr_size
+ *
+ * @param int_arr
+ * @param int_arr_size
+ * @return void
+ */
 Sequence::Sequence(const int* int_arr, const int int_arr_size)
 {
     if (int_arr_size != 0)
@@ -69,6 +92,13 @@ Sequence::Sequence(const int* int_arr, const int int_arr_size)
     }
 
 }
+
+/**
+ * Setter for size_t sequence_size
+ *
+ * @param size_value
+ * @return void
+ */
 void Sequence::set_size(const size_t size_value)
 {
     if (size_value >= 0)
@@ -80,6 +110,13 @@ void Sequence::set_size(const size_t size_value)
         throw std::runtime_error("set_size(size_t) - size is invalid");
     }
 }
+
+/**
+ * Setter for size_t sequence_size (int)
+ *
+ * @param size_value
+ * @return void
+ */
 void Sequence::set_size(const int size_value)
 {
     if (size_value >= 0)
@@ -91,41 +128,75 @@ void Sequence::set_size(const int size_value)
         throw std::runtime_error("set_size(int) - size is invalid");
     }
 }
-// Getter for size
+
+
+/**
+ * Getter for size_t sequence_size
+ *
+ * @return sequence_size size_t
+ */
 size_t Sequence::size() const
 {
     return this->sequence_size;
 }
-// Getter for head
+/**
+ * Getter for head
+ *
+ * @return head SequenceNode*
+ */
 SequenceNode* Sequence::get_head() const
 {
     return this->head;
 }
-// Setter for head
+
+/**
+ * Setter for head of Sequence
+ *
+ * @param head_value SequenceNode*
+ * @return void
+ */
 void Sequence::set_head(SequenceNode* head_value)
 {
     this->head = head_value;
 }
-// Getter for tail
+
+/**
+ * Getter for tail
+ *
+ * @return tail Sequence*
+ */
 SequenceNode* Sequence::get_tail() const
 {
     return this->tail;
 }
 
-// Setter for tail
+
+/**
+ * Setter for tail
+ *
+ * @param tail_value SequenceNode*
+ * @return void
+ */
 void Sequence::set_tail(SequenceNode* tail_value)
 {
     this->tail = tail_value;
 }
 
-// Destroys all items in the sequence and release the memory
-// associated with the sequence
+/**
+ * Destroys all items in the sequence and release the memory associated with the sequence
+ * @return void
+ */
 Sequence::~Sequence()
 {
     this->clear();
 }
-// The current sequence is released and replaced by a (deep) copy of sequence
-// s. A reference to the copied sequence is returned (return *this;).
+/**
+ * The current sequence is released and replaced by a (deep) copy of sequences.
+ * A reference to the copied sequence is returned (return *this;).
+ *
+ * @param s Sequence&
+ * @return updated_sequence Sequence&
+ */
 Sequence& Sequence::operator=(const Sequence& s)
 {
     if (s.sequence_size >= 0) 
@@ -141,10 +212,15 @@ Sequence& Sequence::operator=(const Sequence& s)
     }
     
 }
-// The position satisfies ( position >= 0 && position <= last_index() ).
-// The return value is a reference to the item at index position in the
-// sequence. Throws an exception if the position is outside the bounds
-// of the sequence
+/**
+ * The position satisfies ( position >= 0 && position <= last_index() ).
+ * The return value is a reference to the item at index position in the
+ * sequence. Throws an exception if the position is outside the bounds
+ * of the sequence
+ *
+ * @param position size_t
+ * @return item string&
+ */
 std::string& Sequence::operator[](size_t position)
 {
     if ((position >= 0) && (position <= this->last_index()))
@@ -170,7 +246,13 @@ std::string& Sequence::operator[](size_t position)
         throw std::runtime_error("Sequence::operator[] - Index out of range");
     }
 }
-// The value of string item is append to the sequence.
+
+/**
+ * The value of string item is append to the sequence.
+ *
+ * @param item std::string
+ * @return void
+ */
 void Sequence::push_back(std::string item)
 {
     SequenceNode* new_node = new SequenceNode(std::move(item));
@@ -210,16 +292,23 @@ void Sequence::push_back(std::string item)
         new_node->set_prev(this->get_tail());
         this->set_tail(new_node);
     }
-
-
 }
-// The value of int item is append to the sequence.
+
+/**
+ * The value of int item is append to the sequence.
+ *
+ * @param item int
+ * @return void
+ */
 void Sequence::push_back(int item)
 {
     this->push_back(std::to_string(item));
 }
-// The item at the end of the sequence is deleted and size of the sequence is
-// reduced by one. If sequence was empty, throws an exception
+/**
+ * The item at the end of the sequence is deleted and size of the sequence is
+ * reduced by one. If sequence was empty, throws an exception
+ * @return void
+ */
 void Sequence::pop_back()
 {
     const size_t init_size = this->size();
@@ -253,10 +342,15 @@ void Sequence::pop_back()
         throw std::runtime_error("Sequence::push_back - Sequence is empty");
     }
 }
-// The position satisfies ( position >= 0 && position <= last_index() ). The
-// value of item is inserted at position and the size of sequence is increased
-// by one. Throws an exceptionif the position is outside the bounds of the
-// sequence
+/**
+ * The position satisfies ( position >= 0 && position <= last_index() ). The
+ * value of item is inserted at position and the size of sequence is increased
+ * by one. Throws an exceptionif the position is outside the bounds of the
+ * sequence
+ *
+ * @param position size_t
+ * @param item std::string
+ */
 void Sequence::insert(size_t position, std::string item)
 {
     //size_t is always >= zero, so no comparison needed for that
@@ -291,11 +385,27 @@ void Sequence::insert(size_t position, std::string item)
         throw std::runtime_error("insert - invalid index");
     }
 }
+
+/**
+ * The position satisfies ( position >= 0 && position <= last_index() ). The
+ * value of item is inserted at position and the size of sequence is increased
+ * by one. Throws an exceptionif the position is outside the bounds of the
+ * sequence
+ *
+ * @param position size_t
+ * @param item int
+ * @return void
+ */
 void Sequence::insert(size_t position, int item)
 {
     this->insert(position, std::to_string(item));
 }
-// Returns the first element in the sequence. If the sequence is empty, throw an exception.
+
+/**
+ * Returns the first element in the sequence. If the sequence is empty, throw an exception.
+ *
+ * @return front_item std::string
+ */
 std::string Sequence::front() const
 {
     if (!(this->empty())) 
@@ -308,7 +418,11 @@ std::string Sequence::front() const
     }
     
 }
-// Return the last element in the sequence. If the sequence is empty, throw an exception.
+/**
+ * Return the last element in the sequence. If the sequence is empty, throw an exception.
+ *
+ * @return back_item std::string
+ */
 std::string Sequence::back() const
 {
     if (this->empty()) 
@@ -317,7 +431,11 @@ std::string Sequence::back() const
     }
     return this->get_tail()->get_item();
 }
-// Return true if the sequence has no elements, otherwise false.
+/**
+ * Return true if the sequence has no elements, otherwise false.
+ *
+ * @return is_empty bool
+ */
 bool Sequence::empty() const
 {
     if (this->size() > 0)
@@ -329,9 +447,13 @@ bool Sequence::empty() const
         return true;
     }
 }
-// All items in the sequence are deleted and the memory associated with the
-// sequence is released, resetting the sequence to an empty state that can have
-// items re-inserted.
+
+/**
+ * All items in the sequence are deleted and the memory associated with the
+ * sequence is released, resetting the sequence to an empty state that can have
+ * items re-inserted.
+ * @return void
+ */
 void Sequence::clear()
 {
     if (this->size() == 1)
@@ -359,8 +481,14 @@ void Sequence::clear()
     //     throw std::runtime_error("Sequence::clear - Sequence is empty");
     // }
 }
-// The item at position is removed from the sequence, and the memory
-// is released. If called with an invalid position throws an exception.
+
+/**
+ * The item at position is removed from the sequence, and the memory
+ * is released. If called with an invalid position throws an exception.
+ *
+ * @param position size_t
+ * @return void
+ */
 void Sequence::erase(size_t position)
 {
     if (!this->empty())
@@ -427,9 +555,16 @@ void Sequence::erase(size_t position)
         throw std::runtime_error("Sequence::erase() - Empty Sequence");
     }
 }
-// The items in the sequence at ( position ... (position + count - 1) ) are
-// deleted and their memory released. If called with invalid position and/or
-// count throws an exception.
+
+/**
+ * The items in the sequence at ( position ... (position + count - 1) ) are
+ * deleted and their memory released. If called with invalid position and/or
+ * count throws an exception.
+ *
+ * @param position size_t
+ * @param count size_t
+ * @return void
+ */
 void Sequence::erase(size_t position, size_t count)
 {
     const int end_of_range = static_cast<int>(position + count - 1);
@@ -446,11 +581,23 @@ void Sequence::erase(size_t position, size_t count)
         throw std::runtime_error("Sequence::erase() - Invalid index");
     }
 }
+/**
+ * Gets the last integer index in the sequence from its size
+ *
+ * @return last_index int
+ */
 int Sequence::last_index() const
 {
     return static_cast<int>(this->size() - 1);
 }
-bool Sequence::operator==(const Sequence* s) const 
+
+/**
+ * Compare current Sequence to Sequence*
+ *
+ * @param s Sequence*
+ * @return are_sequences_equal bool
+ */
+bool Sequence::operator==(const Sequence* s) const
 {
     if (s != nullptr)
     {
@@ -464,7 +611,14 @@ bool Sequence::operator==(const Sequence* s) const
         return false;  
     } 
 }
-bool Sequence::operator!=(const Sequence* s) const 
+
+/**
+ * Compare if sequences are unequal
+ *
+ * @param s Sequence*
+ * @return are_sequences_unequal bool
+ */
+bool Sequence::operator!=(const Sequence* s) const
 {
     if (s != nullptr)
     {
@@ -478,9 +632,15 @@ bool Sequence::operator!=(const Sequence* s) const
         return true;
     }    
 }
-// Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
-// stream. This is *not* a method of the Sequence class, but instead it is a
-// friend function
+/**
+ * Outputs all elements (ex: <4, 8, 15, 16, 23, 42>) as a string to the output
+ * stream. This is *not* a method of the Sequence class, but instead it is a
+ * friend function
+ *
+ * @param os std::ostream&
+ * @param s Sequence&
+ * @return new_ostream std::ostream&
+ */
 std::ostream& operator<<(std::ostream& os, const Sequence& s)
 {
 
@@ -526,7 +686,6 @@ std::ostream& operator<<(std::ostream& os, const Sequence& s)
             {
                 os << ",";
             }
-
         }
     }
     os << ">";
