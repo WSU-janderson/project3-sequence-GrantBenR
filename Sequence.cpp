@@ -42,17 +42,20 @@ SequenceNode* Sequence::get_at(const size_t position) const
  */
 Sequence::Sequence(size_t sz) : head(nullptr), tail(nullptr)
 {
-
-    SequenceNode* first_node = new SequenceNode("");
-    // Set first node manually
-    this->set_size(1);
-    this->head = first_node;
-    this->tail = first_node;
-    // Set others using push_back
-    for (int i = 1; i < sz; i++)
+    if (sz > 0)
     {
-        this->push_back("");
+        SequenceNode* first_node = new SequenceNode("");
+        // Set first node manually
+        this->set_size(1);
+        this->head = first_node;
+        this->tail = first_node;
+        // Set others using push_back
+        for (int i = 1; i < sz; i++)
+        {
+            this->push_back("");
+        }
     }
+
 }
 //
 /**
@@ -85,7 +88,7 @@ Sequence::Sequence(const int* int_arr, const int int_arr_size)
     if (int_arr_size != 0)
     {
         // Set first node manually
-        SequenceNode* first_node = new SequenceNode("");
+        SequenceNode* first_node = new SequenceNode(int_arr[0]);
         this->set_size(1);
         this->head = first_node;
         this->tail = first_node;

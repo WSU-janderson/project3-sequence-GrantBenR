@@ -183,7 +183,7 @@ bool SequenceTest::TEST_S_insert_int()
     std::cout << "- - Sequence::insert(size_t position, int value) - - " << std::endl;
     Sequence* test_sequence = new Sequence(TEST_INT_ARR, TEST_INT_ARR_SIZE);
     std::cout << "Sequence before insert: " << *test_sequence << std::endl;
-    test_sequence->insert(2, 250);
+    test_sequence->insert(2, 67);
     std::cout << "Sequence after insert: " << *test_sequence << std::endl;
     std::cout << "- - - - PASS - - - -" << std::endl << std::endl;
     return true;
