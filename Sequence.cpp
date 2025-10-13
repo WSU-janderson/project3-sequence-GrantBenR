@@ -3,6 +3,7 @@
 #include <string>
 #include <ostream>
 #include <exception>
+#include <iostream>
 #include <utility>
 
 /**
@@ -468,34 +469,19 @@ bool Sequence::empty() const
  */
 void Sequence::clear()
 {
-    if (this->size() == 1)
+    if (!(this->empty()))
     {
-        // Head and tail are same object if size = 1
-        this->set_head(nullptr);
-        this->set_tail(nullptr);
-        this->set_size(0);
-    }
-    else if (this->size() > 1)
-    {
-
-        SequenceNode* curr_tail = this->get_tail();
-        SequenceNode* prev_node = curr_tail->get_prev();
-        while (prev_node != nullptr)
+        SequenceNode* current = head;
+        while (current != nullptr)
         {
-            curr_tail = prev_node;
-            prev_node = curr_tail->get_prev();
-            // delete(curr_tail);
-            // I removed this line since it was causing segfaults.
-            // SequenceNode has a destructor that should handle this.
+            SequenceNode* node_to_delete = current;
+            current = current->next;
+            delete node_to_delete;
         }
-        this->set_head(nullptr);
-        this->set_tail(nullptr);
         this->set_size(0);
+        this->head = nullptr;
+        this->tail = nullptr;
     }
-    // else
-    // {
-    //     throw std::runtime_error("Sequence::clear - Sequence is empty");
-    // }
 }
 
 /**

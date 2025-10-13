@@ -79,7 +79,7 @@ SequenceNode::SequenceNode(const SequenceNode& s) : next(nullptr), prev(nullptr)
  */
 SequenceNode::~SequenceNode()
 {
-    delete(this);
+    // delete(this);
 }
 
 /**

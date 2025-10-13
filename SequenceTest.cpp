@@ -261,3 +261,22 @@ bool SequenceTest::TEST_S_operator_ostream()
     std::cout << "- - - - PASS - - - -" << std::endl << std::endl;
     return true;
 }
+bool SequenceTest::TEST_S_MemoryLeak()
+{
+    std::cout << "Pre-memory leak test...";
+    std::cout << std::endl;
+
+    for (int k = 0; k < 1; k++)
+    {
+        for (int i = 0; i < 100000; i++) {
+            Sequence s(10);
+            for (int j = 0; j < 10; j++) {
+                s[j] = std::to_string(j);
+            }
+        }
+    }
+
+    std::cout << "Post-memory leak test...";
+    std::cout << std::endl;
+    return true;
+}

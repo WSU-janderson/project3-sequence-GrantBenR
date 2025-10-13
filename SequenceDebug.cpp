@@ -59,6 +59,7 @@ int main()
     IS_TRUE(sequenceTester->TEST_S_erase_count());
     IS_TRUE(sequenceTester->TEST_S_last_index());
     IS_TRUE(sequenceTester->TEST_S_operator_ostream());
+    IS_TRUE(sequenceTester->TEST_S_MemoryLeak());
 
     std::cout << "Your project is ready to go!" << std::endl;
 

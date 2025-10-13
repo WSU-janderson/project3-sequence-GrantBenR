@@ -36,5 +36,6 @@ class SequenceTest
         bool TEST_S_erase_count();
         bool TEST_S_last_index();
         bool TEST_S_operator_ostream();
+        bool TEST_S_MemoryLeak();
 };
 #endif
