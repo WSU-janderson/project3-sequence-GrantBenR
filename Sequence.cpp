@@ -103,9 +103,7 @@ Sequence::Sequence(const int* int_arr, const int int_arr_size)
     {
         throw std::runtime_error("Sequence(int_arr,int_arr_size) - arr is empty");
     }
-
 }
-
 /**
  * Setter for size_t sequence_size
  *
@@ -213,18 +211,29 @@ Sequence::~Sequence()
  */
 Sequence& Sequence::operator=(const Sequence& s)
 {
-    if (s.sequence_size >= 0) 
+    if (!(s.empty()))
     {
-        this->head = s.head;
-        this->tail = s.tail;
-        this->sequence_size = s.sequence_size;
-        return *this;
+        SequenceNode* current = s.get_head();
+        if (current != nullptr)
+        {
+            SequenceNode* first_node = new SequenceNode(current->get_item());
+            // Set first node manually
+            this->set_size(1);
+            this->head = first_node;
+            this->tail = first_node;
+
+            for (size_t i = 1; i < s.size(); i++)
+            {
+                this->push_back(current->get_item()); // push into *this
+                current = current->get_next();
+            }
+        }
+
     }
     else
     {
         throw std::runtime_error("Sequence::operator=(const Sequence&) - Invalid Size");
     }
-    
 }
 /**
  * The position satisfies ( position >= 0 && position <= last_index() ).
@@ -305,6 +314,7 @@ void Sequence::push_back(std::string item)
         //Set tail to new item
         this->get_tail()->set_next(new_node);
         new_node->set_prev(this->get_tail());
+        new_node->set_next(nullptr);
         this->set_tail(new_node);
     }
 }
@@ -474,17 +484,17 @@ void Sequence::clear()
 {
     if (!(this->empty()))
     {
-        SequenceNode* current = head;
+        SequenceNode* current = get_head();
         while (current != nullptr)
         {
             SequenceNode* node_to_delete = current;
-            current = current->next;
+            current = current->get_next();
             delete node_to_delete;
         }
-        this->set_size(0);
-        this->head = nullptr;
-        this->tail = nullptr;
     }
+    this->set_size(0);
+    this->head = nullptr;
+    this->tail = nullptr;
 }
 
 /**

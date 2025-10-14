@@ -77,11 +77,7 @@ SequenceNode::SequenceNode(const SequenceNode& s) : next(nullptr), prev(nullptr)
  *
  * @return void
  */
-SequenceNode::~SequenceNode()
-{
-    // delete(this);
-}
-
+SequenceNode::~SequenceNode()=default;
 /**
  * SequenceNode.item getter
  *
