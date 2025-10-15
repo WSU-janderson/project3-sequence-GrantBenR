@@ -227,6 +227,11 @@ Sequence& Sequence::operator=(const Sequence& s)
                 this->push_back(current->get_item()); // push into *this
                 current = current->get_next();
             }
+            return *this;
+        }
+        else
+        {
+            std::runtime_error("Sequence::operator=(const Sequence&) - Invalid Head");
         }
 
     }
